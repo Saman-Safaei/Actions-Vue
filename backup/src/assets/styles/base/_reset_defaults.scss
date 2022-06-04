@@ -1,0 +1,58 @@
+html {
+    background: $green;
+    overflow-x: hidden;
+}
+body {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+button {
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:focus, &:focus-visible {
+        outline: none 0 transparent;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: $dark;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    user-select: none;
+    font-size: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    background: transparent;
+    border: none;
+    &:focus {
+        outline: none;
+    }
+}
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  color: $dark;
+}

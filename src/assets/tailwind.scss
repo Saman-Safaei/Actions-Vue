@@ -1,0 +1,14 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+input {
+  background-color: transparent;
+
+  &:focus {
+    outline: none 0;
+  }
+  &:focus-visible {
+    outline: none 0;
+  }
+}

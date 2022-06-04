@@ -1,0 +1,26 @@
+{
+  "name": "my-actions-vue",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --port 5050 --host"
+  },
+  "dependencies": {
+    "@heroicons/vue": "^1.0.6",
+    "@vee-validate/rules": "^4.5.11",
+    "axios": "^0.27.2",
+    "pinia": "^2.0.13",
+    "vee-validate": "^4.5.11",
+    "vue": "^3.2.33",
+    "vue-router": "^4.0.14"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.1",
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "sass": "^1.52.0",
+    "tailwindcss": "^3.0.24",
+    "vite": "^2.9.5"
+  }
+}

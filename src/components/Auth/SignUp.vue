@@ -60,12 +60,16 @@ async function onSubmit() {
   if (validationResult.errors.password) notifStore.pushNotification(validationResult.errors.password);
 
   if (validationResult.valid) {
+    isButtonEnabled.value = false;
+
     const user = new User(username.value, password.value, email.value);
     user.signup().then(response => {
       notifStore.pushNotification(response.data.message);
       emits("switch");
     }).catch(result => {
-      notifStore.pushNotification(result.response.data.message);
+      isButtonEnabled.value = true;
+      const message = (result.response.data) ? result.response.data.message : result.message;
+      notifStore.pushNotification(message);
     });
   }
 }

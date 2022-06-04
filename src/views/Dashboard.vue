@@ -10,9 +10,7 @@
     <p>Click on "New" button on navbar to create an action.</p>
   </div>
 
-  <div class="no-todo" v-show="!dataLoaded">
-    <h3>... Loading Data ...</h3>
-  </div>
+  <PlaceHolderActions class="no-todo" v-show="!dataLoaded" />
 
   <ActionModal :text="modalData" @close="closeModal" v-if="showModal" />
 </template>
@@ -22,6 +20,8 @@ import Navbar from '../components/Navigation/Navbar.vue';
 import ActionsLayout from '../components/Actions/ActionsLayout.vue';
 import Action from '../components/Actions/Action.vue';
 import ActionModal from '../components/Actions/ActionModal.vue';
+import PlaceHolderActions from '../components/Actions/PlaceHolderActions.vue';
+
 import { reactive, ref } from 'vue';
 import Actions from '../models/actions';
 import { useRouter } from 'vue-router';

@@ -1,9 +1,10 @@
 <template>
   <Teleport to="body">
 
-    <div class="backdrop"></div>
-    <div class="content">
-      <button class="btn" @click="emits('close')">&#x2715;</button>
+    <div class="fixed inset-0 bg-black opacity-30 z-10"></div>
+    <div
+      class="fixed bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10/12 max-w-md max-h-[50vh] overflow-x-hidden overflow-y-auto z-[11] rounded-md pt-8 pb-4 px-4">
+      <button class="absolute top-1 right-1 bg-red-400 w-6 h-6 rounded-md align-middle text-white" @click="emits('close')">&#x2715;</button>
       <div v-html="props.text"></div>
     </div>
   </Teleport>
@@ -13,41 +14,3 @@
 const props = defineProps(["text"]);
 const emits = defineEmits(["close"]);
 </script>
-
-<style lang="scss" scoped>
-// @import "../../assets/styles/base/variables";
-
-// .backdrop {
-//   position: fixed;
-//   inset: 0 0 0 0;
-//   background: black;
-//   opacity: 0.2;
-//   z-index: 10;
-// }
-
-// .content {
-//   position: fixed;
-//   top: 50%;
-//   left: 50%;
-//   transform: translateX(-50%) translateY(-50%);
-//   width: 90%;
-//   max-height: $sm;
-//   max-width: $md;
-//   overflow-y: auto;
-//   overflow-x: hidden;
-//   background: white;
-//   z-index: 11;
-//   padding: 2rem 1rem 1rem 1rem;
-//   border-radius: 0.2rem;
-
-//   .btn {
-//     position: absolute;
-//     top: 0.2rem;
-//     right: 0.2rem;
-//     background-color: rgb(170, 0, 0);
-//     padding: 0.1rem 0.2rem;
-//     border-radius: 0.2rem;
-//     color: white;
-//   }
-// }
-</style>

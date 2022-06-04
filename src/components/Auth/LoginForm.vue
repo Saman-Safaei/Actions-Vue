@@ -12,7 +12,10 @@
       </div>
       <button 
         class="block w-full bg-gradient-to-b from-teal-600 to-teal-700 text-white rounded-md px-4 py-3" 
-        type="submit">Login</button>
+        type="submit" :disabled="!isButtonEnabled">
+          <template v-if="isButtonEnabled">Login</template>
+          <template v-else>Please Wait ...</template>
+        </button>
     </form>
     <p class="text-center mt-2.5">Don't have an account ? <a class="text-teal-700 cursor-pointer"
         @click.prevent="emits('switch')">Sign up</a> !</p>
@@ -27,13 +30,20 @@ import { UserCircleIcon, LockClosedIcon } from "@heroicons/vue/outline";
 import { useNotifStore } from "../../stores/notification";
 import { useUserStore } from "../../stores/users";
 import User from "../../models/users";
+import { ref } from "vue";
 
+// Other --------------------------------------------------
+const isButtonEnabled = ref(true);
 
+// Create and Use Stores ----------------------------------
 const notifStore = useNotifStore();
 const userStore = useUserStore();
+// Get The Router -----------------------------------------
 const router = useRouter();
+// Define Switch Emit -------------------------------------
 const emits = defineEmits(["switch"]);
 
+// Initialize Form Validator ------------------------------
 const { validate } = useForm({
   validationSchema: {
     username: "required|min:3",
@@ -41,21 +51,26 @@ const { validate } = useForm({
   }
 });
 
+// Initialize Fields --------------------------------------
 const { value: username } = useField("username", undefined, { validateOnValueUpdate: false });
 const { value: password } = useField("password", undefined, { validateOnValueUpdate: false });
 
-
+// Handle onSubmit event of the login form ----------------
 async function onSubmit() {
   const validationResult = await validate();
   if (validationResult.errors.username) notifStore.pushNotification(validationResult.errors.username);
   if (validationResult.errors.password) notifStore.pushNotification(validationResult.errors.password);
 
   if (validationResult.valid) {
+    isButtonEnabled.value = false;
+
     User.login(username.value, password.value).then(response => {
       userStore.logIn(response.data.token, response.data.username);
       router.push({ name: "dashboard" });
     }).catch(result => {
-      notifStore.pushNotification(result);
+      const message = (result.response.data) ? result.response.data.message : result.message;
+      notifStore.pushNotification(message);
+      isButtonEnabled.value = true;
     });
   }
 }

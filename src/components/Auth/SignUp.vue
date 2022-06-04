@@ -17,7 +17,12 @@
       </div>
       <button 
         class="block w-full bg-gradient-to-b from-teal-600 to-teal-700 text-white rounded-md px-4 py-3" 
-        type="submit">Sign up</button>
+        type="submit" :disabled="!isButtonEnabled">
+
+        <template v-if="isButtonEnabled">Sign up</template>
+        <template v-else>Please Wait ...</template> 
+
+      </button>
     </form>
     <p class="text-center mt-2.5">Have an account ? <a class="text-teal-700 cursor-pointer" @click.prevent="emits('switch')">Login</a> !</p>
   </div>
@@ -26,11 +31,12 @@
 <script setup>
 import { useField, useForm } from "vee-validate";
 import { UserCircleIcon, MailIcon, LockClosedIcon } from "@heroicons/vue/outline";
+import { ref } from "vue";
 
 import { useNotifStore } from "../../stores/notification";
 import User from "../../models/users";
 
-
+const isButtonEnabled = ref(true);
 const notifStore = useNotifStore();
 const emits = defineEmits(["switch"]);
 
@@ -64,70 +70,3 @@ async function onSubmit() {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-// @import "../../assets/styles/base/variables";
-
-// .signup {
-//   display: block;
-//   width: 100%;
-//   padding: 1rem;
-
-//   @media screen and (min-width: $sm) {
-//     max-width: $sm;
-//   }
-
-//   .signup__title {
-//     font-size: 2.5rem;
-//     text-align: center;
-//     margin: 0 0 1.6rem 0;
-//     font-weight: 900;
-//     color: $light;
-//   }
-
-//   .signup__input {
-//     display: block;
-//     width: 100%;
-//     border: transparentize($color: $dark, $amount: 0.4) solid 0.15rem;
-//     margin: 0.7rem 0;
-//     padding: 0.7rem 0.8rem;
-//     border-radius: 0.5rem;
-//     color: $dark;
-//     transition: 300ms;
-
-//     &:focus {
-//       border: $dark solid 0.15rem;
-
-//     }
-
-//     &::placeholder {
-//       color: $dark;
-//       opacity: 0.8;
-//     }
-//   }
-
-//   .signup__submit {
-//     display: block;
-//     width: 100%;
-//     background: linear-gradient(5deg, $dark, $dark-green);
-//     padding: 0.9rem 1rem;
-//     border-radius: 0.5rem;
-//     color: $light;
-//     transition: 200ms;
-
-//     &:active {
-//       transform: scale(0.98);
-//     }
-//   }
-
-//   .signup__subtitle {
-//     margin-top: 1.1rem;
-//     text-align: center;
-//     color: $dark;
-//   }
-
-//   .signup__login-url {
-//     color: $link-color;
-//   }
-// }
-</style>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3030";
+const baseURL = "https://api-actions-node.herokuapp.com";
 
 export { baseURL };
 export default axios.create({ baseURL });

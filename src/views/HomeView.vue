@@ -22,6 +22,10 @@ function swithComponent() {
   showLogin.value = !showLogin.value;
 }
 
+function closeMessage() {
+  showMessage.value = false;
+}
+
 const component = computed(() => {
   if (showLogin.value) return Login;
   else return SignUp;

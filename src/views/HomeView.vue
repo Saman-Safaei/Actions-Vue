@@ -4,16 +4,19 @@
       <component :is="component" @switch="swithComponent" />
     </Transition>
   </div>
+  <ActionModal text="Make sure of your enabled VPN" @close="showMessage = false" />
 </template>
 
 <script setup>
 import SignUp from '../components/Auth/SignUp.vue';
 import Login from '../components/Auth/LoginForm.vue';
+import ActionModal from '../components/Actions/ActionModal.vue';
 
 import { ref, computed } from 'vue';
 
 
 const showLogin = ref(true);
+const showMessage = ref(true);
 
 function swithComponent() {
   showLogin.value = !showLogin.value;

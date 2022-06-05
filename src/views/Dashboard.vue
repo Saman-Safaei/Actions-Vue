@@ -21,13 +21,15 @@ import ActionsLayout from '../components/Actions/ActionsLayout.vue';
 import Action from '../components/Actions/Action.vue';
 import ActionModal from '../components/Actions/ActionModal.vue';
 import PlaceHolderActions from '../components/Actions/PlaceHolderActions.vue';
+import Actions from '../models/actions';
+import { useUserStore } from '../stores/users';
 
 import { reactive, ref } from 'vue';
-import Actions from '../models/actions';
 import { useRouter } from 'vue-router';
 
 
 const router = useRouter();
+const userStore = useUserStore();
 // Initial data for loading...
 const actions = reactive([]);
 const dataLoaded = ref(false);
@@ -40,8 +42,7 @@ async function getData() {
     dataLoaded.value = true;
   } catch (err) {
     if (err.response.status === 401) {
-      localStorage.setItem("token", "");
-      localStorage.setItem("username", "");
+      userStore.logOut();
       router.push({ name: "auth" });
     }
   }

@@ -4,7 +4,7 @@
       <component :is="component" @switch="swithComponent" />
     </Transition>
   </div>
-  <ActionModal text="Make sure of your enabled VPN" @close="showMessage.value = false" />
+  <ActionModal text="Make sure of your enabled VPN" @close="closeMessage" />
 </template>
 
 <script setup>

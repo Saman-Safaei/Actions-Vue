@@ -1,37 +1,45 @@
 <template>
-  <nav class="flex flex-row items-center gap-1.5 p-3 shadow-md rounded-md mt-3 mb-2 bg-white">
+  <nav :dir="direction" class="flex flex-row items-center gap-1.5 p-3 shadow-md rounded-md mt-3 mb-2 bg-white">
 
-    <router-link 
-      :to="{ name: 'createaction' }" 
-      class="border-solid border-2 border-teal-600 rounded-md px-2 py-1 text-teal-600 hover:text-white hover:bg-teal-600 transition ease-linear">New</router-link>
+    <router-link :to="{ name: 'createaction' }"
+      class="border-solid border-2 border-teal-600 rounded-md px-2 py-1 text-teal-600 hover:text-white hover:bg-teal-600 transition ease-linear">
+      {{ t("buttons.new") }}
+    </router-link>
 
-    <OutlinedButton @click="logoutAndPush" >Logout</OutlinedButton>
+    <OutlinedButton @click="logoutAndPush">{{ t("buttons.logout") }}</OutlinedButton>
 
     <span class="grow"></span>
 
+    <button class="border-solid border-b-4 border-teal-600" @click="changeLang">{{ locale }}</button>
     <img class="w-8 h-8" src="@/assets/logo.svg" alt="brand">
 
   </nav>
 </template>
 
-<script>
-import { mapActions } from "pinia";
+<script setup>
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
+import { useRouter } from "vue-router";
 import { useUserStore } from "../../stores/users";
 import OutlinedButton from "../Buttons/OutlinedButton.vue";
 
-export default {
-  name: "Navbar",
-  methods: {
-    ...mapActions(useUserStore, ['logOut']),
-    logoutAndPush() {
-      this.logOut();
-      this.$router.push({ name: "auth" });
-    }
-  },
-  components: {
-    OutlinedButton
-  }
+
+const userStore = useUserStore();
+const router = useRouter();
+
+const { t, locale } = useI18n({ useScope: "global" });
+
+function logoutAndPush() {
+  userStore.logOut();
+  router.push({ name: "auth" });
 }
+function changeLang() {
+  locale.value === "en" ? locale.value = 'fa' : locale.value = 'en';
+}
+
+const direction = computed(() => {
+  return (locale.value === "fa") ? "rtl" : "ltr";
+});
 </script>
 
 <style lang="scss" scoped>

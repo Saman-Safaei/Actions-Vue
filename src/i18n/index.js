@@ -14,7 +14,8 @@ export default {
       dhaveAccount: "Don't have an account ?",
       username: "Username",
       email: "Email Address",
-      password: "Password"
+      password: "Password",
+      about: "About this site"
     }
   },
   fa: {
@@ -32,7 +33,8 @@ export default {
       dhaveAccount: "ثبت نام نکرده اید ؟",
       username: "نام کاربری",
       email: "آدرس ایمیل",
-      password: "رمز عبور"
+      password: "رمز عبور",
+      about: "درباره این سایت"
     }
   }
 }

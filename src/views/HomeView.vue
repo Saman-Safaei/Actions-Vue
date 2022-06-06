@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-row min-h-[90vh] md:min-h-[98vh] items-center justify-center">
+  <div class="flex flex-col min-h-[90vh] md:min-h-[98vh] items-center justify-center">
     <Transition name="home-slide" mode="out-in">
       <component :is="component" @switch="swithComponent" />
     </Transition>
   </div>
-  <ActionModal v-if="showMessage" text="Make sure of your enabled VPN" @close="closeMessage" />
+  <ActionModal :center="true" v-if="showMessage" text="Make sure of your enabled VPN<br>مطمئن شوید به فیلتر شکن متصل اید" @close="closeMessage" />
 </template>
 
 <script setup>

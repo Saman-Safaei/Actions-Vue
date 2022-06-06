@@ -2,6 +2,15 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@font-face {
+  font-family: vazir;
+  src: url("./font_vazir.ttf");
+}
+@font-face {
+  font-family: shabnam;
+  src: url("./font_shabnam.ttf");
+}
+
 input {
   background-color: transparent;
 
@@ -15,4 +24,5 @@ input {
 
 html {
   overflow-x: hidden;
+  font-family: shabnam;
 }

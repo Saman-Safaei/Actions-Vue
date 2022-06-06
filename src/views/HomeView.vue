@@ -3,8 +3,16 @@
     <Transition name="home-slide" mode="out-in">
       <component :is="component" @switch="swithComponent" />
     </Transition>
+    <div :dir="direction" class="flex flex-row justify-between w-full sm:w-3/5 md:w-2/5 py-2 px-3">
+      <router-link :to="{ name: 'about' }" class="text-teal-900">{{ t("texts.about") }}</router-link>
+      <span class="flex flex-row gap-2">
+        <button @click="switchLang" class="text-teal-800">{{ locale }}</button>
+        <GlobeIcon class="text-gray-500 h-5 w-5" />
+      </span>
+    </div>
   </div>
-  <ActionModal :center="true" v-if="showMessage" text="Make sure of your enabled VPN<br>مطمئن شوید به فیلتر شکن متصل اید" @close="closeMessage" />
+  <ActionModal :center="true" v-if="showMessage"
+    text="Make sure of your enabled VPN<br>مطمئن شوید به فیلتر شکن متصل اید" @close="closeMessage" />
 </template>
 
 <script setup>
@@ -13,10 +21,19 @@ import Login from '../components/Auth/LoginForm.vue';
 import ActionModal from '../components/Actions/ActionModal.vue';
 
 import { ref, computed } from 'vue';
+import { GlobeIcon } from '@heroicons/vue/outline';
+import { useI18n } from 'vue-i18n';
 
 
 const showLogin = ref(true);
 const showMessage = ref(true);
+
+const { t, locale } = useI18n();
+const direction = computed(() => locale.value === 'fa' ? "rtl" : "ltr");
+
+function switchLang() {
+  locale.value === 'fa' ? locale.value = 'en' : locale.value = 'fa';
+}
 
 function swithComponent() {
   showLogin.value = !showLogin.value;
@@ -33,11 +50,11 @@ const component = computed(() => {
 </script>
 
 <style lang="scss">
-
 .home-slide-enter-from {
   opacity: 0;
   transform: translateX(-100vw);
 }
+
 .home-slide-leave-to {
   opacity: 0;
   transform: translateX(100vw);
@@ -47,5 +64,4 @@ const component = computed(() => {
 .home-slide-leave-active {
   transition: all 0.5s ease-in-out;
 }
-
 </style>

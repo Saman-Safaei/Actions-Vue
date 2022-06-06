@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://api-actions-node.herokuapp.com";
+const baseURL = import.meta.env.VITE_API;
 
 export { baseURL };
 export default axios.create({ baseURL });

@@ -17,16 +17,21 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/dashboard',
+      path: '/dashboard/',
       name: 'dashboard',
       beforeEnter: [auth_required],
       component: () => import('../views/Dashboard.vue')
     },
     {
-      path: '/create-action',
+      path: '/create-action/',
       name: 'createaction',
       beforeEnter: [auth_required],
       component: () => import('../views/CreateAction.vue')
+    },
+    {
+      path: '/about/',
+      name: 'about',
+      component: () => import('../views/AboutView.vue')
     }
   ]
 });

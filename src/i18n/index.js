@@ -15,7 +15,9 @@ export default {
       username: "Username",
       email: "Email Address",
       password: "Password",
-      about: "About this site"
+      about: "About this site",
+      noAction: "There is no action to show",
+      createAction: "Click on \"New\" button on navbar to create an action."
     }
   },
   fa: {
@@ -34,7 +36,9 @@ export default {
       username: "نام کاربری",
       email: "آدرس ایمیل",
       password: "رمز عبور",
-      about: "درباره این سایت"
+      about: "درباره این سایت",
+      noAction: "هیچ اکشنی برای نمایش نیست",
+      createAction: "با زدن دکمه \"جدید\" میتونین یک اکشن جدید درست کنین"
     }
   }
 }

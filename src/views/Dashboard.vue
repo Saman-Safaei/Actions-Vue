@@ -5,12 +5,12 @@
       @img-clicked="openModal(action.id)" @delete="deleteAction(action.id)" />
   </ActionsLayout>
 
-  <div class="no-todo" v-show="dataLoaded && actions.length === 0">
-    <h3>There is no action to show</h3>
-    <p>Click on "New" button on navbar to create an action.</p>
+  <div class="text-center" v-show="dataLoaded && actions.length === 0">
+    <h3>{{ t("texts.noAction") }}</h3>
+    <p>{{ t("texts.createAction") }}</p>
   </div>
 
-  <PlaceHolderActions class="no-todo" v-show="!dataLoaded" />
+  <PlaceHolderActions v-show="!dataLoaded" />
 
   <ActionModal :text="modalData" @close="closeModal" v-if="showModal" />
 </template>
@@ -23,33 +23,18 @@ import ActionModal from '../components/Actions/ActionModal.vue';
 import PlaceHolderActions from '../components/Actions/PlaceHolderActions.vue';
 import Actions from '../models/actions';
 import { useUserStore } from '../stores/users';
+import { useAllActions } from '../composables/actions';
 
-import { reactive, ref } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 
 
 const router = useRouter();
 const userStore = useUserStore();
-// Initial data for loading...
-const actions = reactive([]);
-const dataLoaded = ref(false);
 
-async function getData() {
-  try {
-    const data = await Actions.getAll();
-    actions.length = 0;
-    actions.push(...data);
-    dataLoaded.value = true;
-  } catch (err) {
-    if (err.response.status === 401) {
-      userStore.logOut();
-      router.push({ name: "auth" });
-    }
-  }
-}
-
-// Loading data for the first time
-getData();
+const { data: actions, loaded: dataLoaded, load: reloadActions } = useAllActions(router, userStore);
+const { t } = useI18n({ useScope: "global" });
 
 // Cards Modal
 const showModal = ref(false);
@@ -66,7 +51,7 @@ function closeModal() {
 async function deleteAction(id) {
   await Actions.delete(id);
   dataLoaded.value = false;
-  getData();
+  reloadActions();
 }
 </script>
 

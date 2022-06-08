@@ -11,9 +11,12 @@
     </div>
     <div class="text-write">
       <input type="text" class="create-action__title" placeholder="Title" v-model="title">
-      <ActionEditor editor-id='editor' @text-changed="updateBody"/>
+      <ActionEditor editor-id='editor' @text-changed="updateBody" />
       <div class="btn-group">
-        <button @click.prevent="createAction" class="btn">Create</button>
+        <button @click.prevent="createAction" class="btn" :disabled="uploading">
+          <template v-if="!uploading">Create</template>
+          <template v-else>Please Wait ...</template>
+        </button>
         <router-link :to="{ name: 'dashboard' }" class="btn">Cancel</router-link>
       </div>
     </div>
@@ -37,6 +40,7 @@ const notifStore = useNotifStore();
 const router = useRouter();
 const img = ref(null);
 const showUploadTxt = ref(true);
+const uploading = ref(false);
 
 
 function updateImg(event) {
@@ -52,7 +56,7 @@ async function createAction() {
   const { valid: isAvatarValid } = await vAvatar();
   const { valid: isTitleValid } = await vTitle();
   if (isAvatarValid && isTitleValid) {
-
+    uploading.value = true;
     const formData = new FormData();
     formData.append("avatar", image.value);
     formData.append("title", title.value);
@@ -79,83 +83,81 @@ async function createAction() {
 </script>
 
 <style lang="scss" scoped>
-// @import "../assets/styles/base/variables";
+.create-action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 94vh;
 
-// .create-action {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   min-height: 94vh;
+  .create-action__file-group {
+    position: relative;
+    border: dashed 2px black;
+    border-radius: 1rem;
+    overflow: hidden;
 
-//   .create-action__file-group {
-//     position: relative;
-//     border: dashed 2px $dark;
-//     border-radius: 1rem;
-//     overflow: hidden;
+    .create-action__upload-text {
+      color: black;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 90%;
+    }
 
-//     .create-action__upload-text {
-//       color: $dark;
-//       text-align: center;
-//       position: absolute;
-//       top: 50%;
-//       left: 50%;
-//       transform: translateX(-50%) translateY(-50%);
-//       width: 90%;
-//     }
+    .create-action__image {
+      display: block;
+      margin: 0 auto;
+      aspect-ratio: 1;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
 
-//     .create-action__image {
-//       display: block;
-//       margin: 0 auto;
-//       aspect-ratio: 1;
-//       width: 100%;
-//       object-fit: cover;
-//     }
-//   }
+  .create-action__file-input {
+    display: none;
+  }
 
-//   .create-action__file-input {
-//     display: none;
-//   }
+  .create-action__title {
+    margin-top: 1rem;
+    width: 100%;
+    background: rgb(245, 245, 245);
+    padding: 0.5rem;
+    text-align: center;
 
-//   .create-action__title {
-//     margin-top: 1rem;
-//     width: 100%;
-//     background: $light;
-//     padding: 0.5rem;
-//     text-align: center;
+    @media screen and (min-width: 800px) {
+      margin-top: 0;
+    }
+  }
 
-//     @media screen and (min-width: $md) {
-//       margin-top: 0;
-//     }
-//   }
+  @media screen and (min-width: 800px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
-//   @media screen and (min-width: $md) {
-//     flex-direction: row;
-//     justify-content: space-between;
-//     align-items: center;
+    .image-select {
+      width: 30%;
+    }
 
-//     .image-select {
-//       width: 30%;
-//     }
+    .text-write {
+      width: 68%;
+    }
+  }
+}
 
-//     .text-write {
-//       width: 68%;
-//     }
-//   }
-// }
+.btn-group {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-end;
+  gap: 0.3rem;
 
-// .btn-group {
-//   margin-top: 0.5rem;
-//   display: flex;
-//   flex-direction: row;
-//   align-items: stretch;
-//   justify-content: flex-end;
-//   gap: 0.3rem;
-
-//   .btn {
-//     background: $light;
-//     padding: $p-xs $p-sm;
-//     border-radius: 0.5rem;
-//     color: $dark;
-//   }
-// }
+  .btn {
+    background: white;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+    color: black;
+  }
+}
 </style>

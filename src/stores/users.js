@@ -27,6 +27,9 @@ export const useUserStore = defineStore("users", {
       this.username = null;
       localStorage.setItem("token", "");
       localStorage.setItem("username", "");
+      
+      sessionStorage.setItem("token", "");
+      sessionStorage.setItem("username", "");
     }
   },
   getters: {

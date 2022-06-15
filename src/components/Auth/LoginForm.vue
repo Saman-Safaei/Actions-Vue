@@ -4,14 +4,23 @@
     <form dir="ltr" @submit.prevent="onSubmit" novalidate>
       <div class="flex flex-row flex-nowrap items-stretch gap-2 bg-gray-200 py-2 pl-2 pr-4 rounded-md mb-2">
         <UserCircleIcon class="w-8 h-8 text-gray-400" />
-        <input :dir="direction" class="grow" type="text" :placeholder="t('texts.username')" autocomplete="off" v-model="username">
+        <input :dir="direction" class="grow" type="text" :placeholder="t('texts.username')" autocomplete="off"
+          v-model="username">
       </div>
-      <div class="flex flex-row flex-nowrap items-stretch gap-2 bg-gray-200 py-2 pl-2 pr-4 rounded-md mb-4">
+      <div class="flex flex-row flex-nowrap items-stretch gap-2 bg-gray-200 py-2 pl-2 pr-4 rounded-md mb-2">
         <LockClosedIcon class="w-8 h-8 text-gray-400" />
-        <input :dir="direction" class="grow" type="text" :placeholder="t('texts.password')" autocomplete="off" v-model="password">
+        <input :dir="direction" class="grow" type="text" :placeholder="t('texts.password')" autocomplete="off"
+          v-model="password">
       </div>
-      <button :dir="direction" class="block w-full bg-gradient-to-b from-teal-600 to-teal-700 text-white rounded-md px-4 py-3"
-        type="submit" :disabled="!isButtonEnabled">
+      <div :dir="direction" class="flex flex-row-reverse flex-nowrap items-center justify-between px-2 py-1 mb-2">
+        <span class="flex gap-3 items-center">
+          {{ t("texts.remember") }} <input type="checkbox" v-model="remember">
+        </span>
+        <router-link class="text-teal-700" to="#">{{ t("texts.forgot") }}</router-link>
+      </div>
+      <button :dir="direction"
+        class="block w-full bg-gradient-to-b from-teal-600 to-teal-700 text-white rounded-md px-4 py-3" type="submit"
+        :disabled="!isButtonEnabled">
         <template v-if="isButtonEnabled">{{ t("buttons.login") }}</template>
         <template v-else>{{ t("buttons.wait") }}</template>
       </button>
@@ -56,8 +65,8 @@ const { validate } = useForm({
 // Initialize Fields --------------------------------------
 const { value: username } = useField("username", undefined, { validateOnValueUpdate: false });
 const { value: password } = useField("password", undefined, { validateOnValueUpdate: false });
-
-// Handle onSubmit event of the login form ----------------
+const { value: remember } = useField("remember", undefined, { validateOnValueUpdate: false });
+// Handle onSubmit event of the login form ---------------- 
 async function onSubmit() {
   const validationResult = await validate();
   if (validationResult.errors.username) notifStore.pushNotification(validationResult.errors.username);
@@ -67,7 +76,7 @@ async function onSubmit() {
     isButtonEnabled.value = false;
 
     User.login(username.value, password.value).then(response => {
-      userStore.logIn(response.data.token, response.data.username);
+      userStore.logIn(response.data.token, response.data.username, remember.value);
       router.push({ name: "dashboard" });
     }).catch(result => {
       const message = (result.response.data) ? result.response.data.message : result.message;

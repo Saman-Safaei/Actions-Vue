@@ -1,11 +1,6 @@
 <template>
   <nav :dir="direction" class="flex flex-row items-center gap-1.5 p-3 shadow-md rounded-md mt-3 mb-2 bg-white">
 
-    <router-link :to="{ name: 'createaction' }"
-      class="border-solid border-2 border-teal-600 rounded-md px-2 py-1 text-teal-600 hover:text-white hover:bg-teal-600 transition ease-linear">
-      {{ t("buttons.new") }}
-    </router-link>
-
     <OutlinedButton @click="logoutAndPush">{{ t("buttons.logout") }}</OutlinedButton>
 
     <span class="grow"></span>

@@ -1,19 +1,19 @@
 <template>
-  <div class="flex flex-col min-h-[92vh] md:min-h-[98vh] items-center justify-center">
+  <div class="flex flex-col min-h-[90vh] md:min-h-[98vh] items-center justify-center">
     <Transition name="home-slide" mode="out-in">
       <component :is="component" @switch="swithComponent" />
     </Transition>
     <div :dir="direction" class="flex flex-row justify-between w-full sm:w-3/5 md:w-2/5 py-2 px-3">
-      <router-link :to="{ name: 'about' }" class="text-white">{{ t("texts.about") }}</router-link>
+      <router-link :to="{ name: 'about' }" class="text-teal-900">{{ t("texts.about") }}</router-link>
       <span class="flex flex-row gap-2">
-        <button @click="switchLang" class="text-white">{{ locale }}</button>
-        <GlobeIcon class="text-gray-100 h-5 w-5" />
+        <button @click="switchLang" class="text-teal-800">{{ locale }}</button>
+        <GlobeIcon class="text-gray-500 h-5 w-5" />
       </span>
     </div>
   </div>
   <ActionModal :center="true" v-if="showMessage"
     text="Make sure of your enabled VPN<br>مطمئن شوید به فیلتر شکن متصل اید" @close="closeMessage" />
-  <div class="fixed inset-0 bg-[url('../assets/imgs/sky.jpg')] bg-cover bg-center -z-20"></div>
+  <div class="fixed inset-0 bg-gradient-to-tr from-teal-100 to-teal-200 -z-20"></div>
 </template>
 
 <script setup>

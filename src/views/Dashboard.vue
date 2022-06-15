@@ -13,6 +13,8 @@
   <PlaceHolderActions v-show="!dataLoaded" />
 
   <ActionModal :text="modalData" @close="closeModal" v-if="showModal" />
+
+  <CreateActionModal v-if="showCreateModal" @close="showCreateModal = !showCreateModal" />
 </template>
 
 <script setup>
@@ -21,9 +23,11 @@ import ActionsLayout from '../components/Actions/ActionsLayout.vue';
 import Action from '../components/Actions/Action.vue';
 import ActionModal from '../components/Actions/ActionModal.vue';
 import PlaceHolderActions from '../components/Actions/PlaceHolderActions.vue';
+import CreateActionModal from '../components/Actions/CreateActionModal.vue';
+
 import Actions from '../models/actions';
 import { useUserStore } from '../stores/users';
-import { useAllActions } from '../composables/actions';
+import { useAllActions } from '../composables/getActions';
 
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -38,6 +42,8 @@ const { t } = useI18n({ useScope: "global" });
 
 // Cards Modal
 const showModal = ref(false);
+const showCreateModal = ref(false);
+
 const modalData = ref("");
 function openModal(cardId) {
   showModal.value = true;

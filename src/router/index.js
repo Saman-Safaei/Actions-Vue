@@ -9,7 +9,7 @@ const router = createRouter({
       path: '/',
       name: 'auth',
       beforeEnter: [authenticated],
-      component: () => import('../views/HomeView.vue')
+      component: () => import('../views/AuthView.vue')
     },
     {
       path: '/about/',
@@ -21,11 +21,6 @@ const router = createRouter({
       name: 'dashboard',
       beforeEnter: [auth_required],
       component: () => import('../views/Dashboard.vue')
-    },
-    {
-      path: '/about/',
-      name: 'about',
-      component: () => import('../views/AboutView.vue')
     }
   ]
 });

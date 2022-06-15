@@ -6,23 +6,41 @@
   font-family: vazir;
   src: url("./font_vazir.ttf");
 }
+
 @font-face {
   font-family: shabnam;
   src: url("./font_shabnam.ttf");
 }
 
-input {
-  background-color: transparent;
+@layer base {
+  input {
 
-  &:focus {
-    outline: none 0;
-  }
-  &:focus-visible {
-    outline: none 0;
-  }
-}
+    background: transparent;
 
-html {
-  overflow-x: hidden;
-  font-family: shabnam;
+    &:focus {
+      outline: none 0;
+    }
+
+    &:focus-visible {
+      outline: none 0;
+    }
+  }
+
+  html {
+    overflow-x: hidden;
+    font-family: shabnam;
+  }
+
+  textarea {
+
+    background: transparent;
+
+    &:focus {
+      outline: none 0;
+    }
+
+    &:focus-visible {
+      outline: none 0;
+    }
+  }
 }

@@ -13,6 +13,8 @@
   </div>
   <ActionModal :center="true" v-if="showMessage"
     text="Make sure of your enabled VPN<br>مطمئن شوید به فیلتر شکن متصل اید" @close="closeMessage" />
+  <div class="fixed inset-0 bg-gradient-to-t from-teal-50 to-teal-200 -z-20"></div>
+  <div class="w-28 h-28 rounded-full fixed top-2 right-1/4 bg-yellow-300 -z-10 blur-[2px] shadow-inner shadow-white"></div>
 </template>
 
 <script setup>

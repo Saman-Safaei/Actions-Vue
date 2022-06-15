@@ -3,26 +3,3 @@
     <slot></slot>
   </div>
 </template>
-
-<style lang="scss" scoped>
-// @import "../../assets/styles/base/variables";
-
-// .actions-layout {
-//   display: grid;
-//   grid-template-columns: 1fr;
-//   gap: 0.6rem;
-//   padding: 1rem;
-
-//   @media screen and (min-width: $sm) {
-//     grid-template-columns: 1fr 1fr;
-//   }
-
-//   @media screen and (min-width: $md) {
-//     grid-template-columns: 1fr 1fr 1fr;
-//   }
-
-//   @media screen and (min-width: $lg) {
-//     grid-template-columns: 1fr 1fr 1fr 1fr;
-//   }
-// }
-</style>

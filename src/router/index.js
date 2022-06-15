@@ -23,12 +23,6 @@ const router = createRouter({
       component: () => import('../views/Dashboard.vue')
     },
     {
-      path: '/create-action/',
-      name: 'createaction',
-      beforeEnter: [auth_required],
-      component: () => import('../views/CreateAction.vue')
-    },
-    {
       path: '/about/',
       name: 'about',
       component: () => import('../views/AboutView.vue')

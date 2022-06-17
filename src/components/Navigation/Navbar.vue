@@ -1,6 +1,7 @@
 <template>
   <nav :dir="direction" class="flex flex-row items-center gap-1.5 p-3 shadow-md rounded-md mt-3 mb-2 bg-white">
 
+    <OutlinedButton @click="mainStore.toggleModal">{{ t("buttons.new") }}</OutlinedButton>
     <OutlinedButton @click="logoutAndPush">{{ t("buttons.logout") }}</OutlinedButton>
 
     <span class="grow"></span>
@@ -16,9 +17,11 @@ import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 import { useUserStore } from "../../stores/users";
+import { useMainStore } from "../../stores/main";
 import OutlinedButton from "../Buttons/OutlinedButton.vue";
 
 
+const mainStore = useMainStore();
 const userStore = useUserStore();
 const router = useRouter();
 

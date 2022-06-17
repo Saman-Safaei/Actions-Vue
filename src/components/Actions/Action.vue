@@ -16,12 +16,14 @@
 import { computed } from 'vue';
 import { baseURL } from '../../api';
 import { TrashIcon, UploadIcon, PencilIcon } from "@heroicons/vue/outline";
+import { useUserStore } from '../../stores/users';
 
+const userStore = useUserStore();
 const props = defineProps(["img", "title", "body", "id"]);
 const emits = defineEmits(["imgClicked", "delete"]);
 
 const img = computed(() => {
-  return baseURL + "/files/" + props.img;
+  return baseURL + "/files/" + props.img + "/?token=" + userStore.token;
 });
 </script>
 

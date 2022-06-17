@@ -3,7 +3,7 @@
     <Transition name="home-slide" mode="out-in">
       <component :is="component" @switch="swithComponent" />
     </Transition>
-    <div :dir="direction" class="flex flex-row justify-between w-full sm:w-3/5 md:w-2/5 py-2 px-3">
+    <div :dir="direction" class="flex flex-row justify-between w-full max-w-sm py-2 px-3">
       <router-link :to="{ name: 'about' }" class="text-teal-900">{{ t("texts.about") }}</router-link>
       <span class="flex flex-row gap-2">
         <button @click="switchLang" class="text-teal-800">{{ locale }}</button>

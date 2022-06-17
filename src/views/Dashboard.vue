@@ -14,7 +14,7 @@
 
   <ActionModal :text="modalData" @close="closeModal" v-if="showModal" />
 
-  <CreateActionModal v-if="showCreateModal" @close="showCreateModal = !showCreateModal" />
+  <CreateActionModal v-if="mainStore.showCreateModal" @close="mainStore.toggleModal" @created="reloadActions" />
 </template>
 
 <script setup>
@@ -27,6 +27,7 @@ import CreateActionModal from '../components/Actions/CreateActionModal.vue';
 
 import Actions from '../models/actions';
 import { useUserStore } from '../stores/users';
+import { useMainStore } from '../stores/main';
 import { useAllActions } from '../composables/getActions';
 
 import { ref } from 'vue';
@@ -36,13 +37,13 @@ import { useI18n } from 'vue-i18n';
 
 const router = useRouter();
 const userStore = useUserStore();
+const mainStore = useMainStore();
 
 const { data: actions, loaded: dataLoaded, load: reloadActions } = useAllActions(router, userStore);
 const { t } = useI18n({ useScope: "global" });
 
 // Cards Modal
 const showModal = ref(false);
-const showCreateModal = ref(false);
 
 const modalData = ref("");
 function openModal(cardId) {

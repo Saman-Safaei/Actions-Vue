@@ -1,15 +1,15 @@
 <template>
-  <div :dir="direction" class="bg-white rounded-md shadow w-full sm:w-3/5 md:w-2/5 py-6 px-5 select-none">
+  <div :dir="direction" class="bg-white rounded-md shadow w-full max-w-sm py-6 px-5 select-none">
     <h3 class="text-center font-bold text-2xl mb-4 text-teal-800">Actions</h3>
     <form dir="ltr" @submit.prevent="onSubmit" novalidate>
       <div class="flex flex-row flex-nowrap items-stretch gap-2 bg-gray-200 py-2 pl-2 pr-4 rounded-md mb-2">
-        <UserCircleIcon class="w-8 h-8 text-gray-400" />
-        <input :dir="direction" class="grow" type="text" :placeholder="t('texts.username')" autocomplete="off"
+        <UserCircleIcon class="w-8 h-8 text-gray-400 shrink-0" />
+        <input :dir="direction" class="grow min-w-0" type="text" :placeholder="t('texts.username')" autocomplete="off"
           v-model="username">
       </div>
       <div class="flex flex-row flex-nowrap items-stretch gap-2 bg-gray-200 py-2 pl-2 pr-4 rounded-md mb-2">
-        <LockClosedIcon class="w-8 h-8 text-gray-400" />
-        <input :dir="direction" class="grow" type="text" :placeholder="t('texts.password')" autocomplete="off"
+        <LockClosedIcon class="w-8 h-8 text-gray-400 shrink-0" />
+        <input :dir="direction" class="grow min-w-0" type="text" :placeholder="t('texts.password')" autocomplete="off"
           v-model="password">
       </div>
       <div :dir="direction" class="flex flex-row-reverse flex-nowrap items-center justify-between px-2 py-1 mb-2">

@@ -1,19 +1,19 @@
 <template>
-  <div :dir="direction" class="bg-white rounded-md shadow w-full sm:w-3/5 md:w-2/5 py-6 px-5 select-none">
+  <div :dir="direction" class="bg-white rounded-md shadow w-full max-w-sm py-6 px-5 select-none">
     <h3 class="text-center font-bold text-2xl mb-4 text-teal-800">Actions</h3>
     <form dir="ltr" @submit.prevent="onSubmit" novalidate>
 
       <div class="flex flex-row flex-nowrap items-stretch gap-2 bg-gray-200 py-2 pl-2 pr-4 rounded-md mb-2">
-        <UserCircleIcon class="w-8 h-8 text-gray-400" />
-        <input :dir="direction" class="grow" type="text" :placeholder="t('texts.username')" autocomplete="off" v-model="username">
+        <UserCircleIcon class="w-8 h-8 text-gray-400 shrink-0" />
+        <input :dir="direction" class="grow min-w-0" type="text" :placeholder="t('texts.username')" autocomplete="off" v-model="username">
       </div>
       <div class="flex flex-row flex-nowrap items-stretch gap-2 bg-gray-200 py-2 pl-2 pr-4 rounded-md mb-2">
-        <MailIcon class="w-8 h-8 text-gray-400" />
-        <input :dir="direction" class="grow" type="email" :placeholder="t('texts.email')" autocomplete="off" v-model="email">
+        <MailIcon class="w-8 h-8 text-gray-400 shrink-0" />
+        <input :dir="direction" class="grow min-w-0" type="email" :placeholder="t('texts.email')" autocomplete="off" v-model="email">
       </div>
       <div class="flex flex-row flex-nowrap items-stretch gap-2 bg-gray-200 py-2 pl-2 pr-4 rounded-md mb-4">
-        <LockClosedIcon class="w-8 h-8 text-gray-400" />
-        <input :dir="direction" class="grow" type="text" :placeholder="t('texts.password')" autocomplete="off" v-model="password">
+        <LockClosedIcon class="w-8 h-8 text-gray-400 shrink-0" />
+        <input :dir="direction" class="grow min-w-0" type="text" :placeholder="t('texts.password')" autocomplete="off" v-model="password">
       </div>
       <button :dir="direction" class="block w-full bg-gradient-to-b from-teal-600 to-teal-700 text-white rounded-md px-4 py-3"
         type="submit" :disabled="!isButtonEnabled">

@@ -1,6 +1,6 @@
 <template>
-  <div class="fixed inset-0 bg-black opacity-30"></div>
-  <div class="fixed inset-0 flex justify-center items-center px-4">
+  <div class="fixed inset-0 bg-black opacity-30 z-10"></div>
+  <div class="fixed inset-0 flex justify-center items-center px-4 z-20">
     <div class="relative w-full max-w-md">
       <button class="rounded-full w-6 h-6 bg-red-400 absolute top-0 right-0 translate-x-1/3 -translate-y-1/3 text-white"
         @click="emits('close')">x</button>
@@ -37,7 +37,7 @@ import { useNotifStore } from '../../stores/notification';
 
 
 const notifStore = useNotifStore();
-const emits = defineEmits(["close"]);
+const emits = defineEmits(["close", "created"]);
 const props = defineProps(["title", "text", "type"]);
 const { t } = useI18n({ useScope: "global" });
 
@@ -67,7 +67,7 @@ function onFileChoosen(ev) {
 function onFormSubmit() {
   validate().then(result => {
     if (result.valid)
-      post(() => { emits('close') }, (err) => { console.log(err) });
+      post(() => { emits('created'); emits('close'); }, (err) => { console.log(err) });
   });
 }
 

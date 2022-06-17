@@ -30,7 +30,7 @@ class Action {
   }
 
   static async delete(id) {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token") || sessionStorage.getItem("token");
     const { data: response } = await api.delete(this.endpoint, {
       data: {
         id

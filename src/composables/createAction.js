@@ -1,10 +1,13 @@
 import { ref, reactive, isRef, unref } from "vue";
+
 import api from "../api";
+import { useUserStore } from "../stores/users";
+
 
 const endpoint = '/actions';
 
 export function useCreateAction(img, title, body, notifStore) {
-  const token = localStorage.getItem("token");
+  const token = useUserStore().token;
 
   const pending = ref(false);
 

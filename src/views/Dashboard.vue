@@ -44,8 +44,8 @@ const { t } = useI18n({ useScope: "global" });
 
 // Cards Modal
 const showModal = ref(false);
-
 const modalData = ref("");
+
 function openModal(cardId) {
   showModal.value = true;
   modalData.value = actions.find((value) => value.id === cardId).body;

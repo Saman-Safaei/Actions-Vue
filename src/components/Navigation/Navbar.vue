@@ -1,6 +1,6 @@
 <template>
-  <nav :dir="direction" class="flex flex-row items-center gap-1.5 p-3 shadow-md rounded-md mt-3 mb-2 bg-white">
-
+  <div :dir="direction" class="flex flex-row items-center gap-1.5 p-3 shadow-md rounded-md bg-white">
+  
     <OutlinedButton @click="mainStore.toggleModal">{{ t("buttons.new") }}</OutlinedButton>
     <OutlinedButton @click="logoutAndPush">{{ t("buttons.logout") }}</OutlinedButton>
 
@@ -9,7 +9,7 @@
     <button class="border-solid border-b-4 border-teal-600" @click="changeLang">{{ locale }}</button>
     <img class="w-8 h-8" src="@/assets/logo.svg" alt="brand">
 
-  </nav>
+  </div>
 </template>
 
 <script setup>

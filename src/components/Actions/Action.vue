@@ -1,6 +1,6 @@
 <template>
   <div class="relative w-full overflow-hidden rounded-md shadow">
-    <img class="object-cover block w-full aspect-square cursor-pointer z-0" :src="img" @click="emits('imgClicked')">
+    <img class="object-cover block w-full aspect-square cursor-pointer z-0" :src="img" @click="emits('imgClicked')" :alt="props.title">
     <div class="flex flex-row justify-start items-center gap-1 p-3 absolute bottom-0 right-0 left-0 z-10 bg-content shadow-[0_-2px_8px_0_rgba(0,0,0,0.1)]">
       <h4 class="grow overflow-hidden whitespace-nowrap text-ellipsis">{{ props.title }}</h4>
       <span class="flex flex-row justify-end items-center gap-1">

@@ -1,20 +1,26 @@
 <template>
-  <Navbar />
-  <ActionsLayout v-show="dataLoaded">
-    <Action v-for="action in actions" :key="action.id" :title='action.title' :img="action.img"
-      @img-clicked="openModal(action.id)" @delete="deleteAction(action.id)" />
-  </ActionsLayout>
+  <header class="p-3">
+    <Navbar />
+  </header>
+  <main>
 
-  <div class="text-center" v-show="dataLoaded && actions.length === 0">
-    <h3>{{ t("texts.noAction") }}</h3>
-    <p>{{ t("texts.createAction") }}</p>
-  </div>
+    <ActionsLayout v-show="dataLoaded">
+      <Action v-for="action in actions" :key="action.id" :title='action.title' :img="action.img"
+        @img-clicked="openModal(action.id)" @delete="deleteAction(action.id)" />
+    </ActionsLayout>
 
-  <PlaceHolderActions v-show="!dataLoaded" />
+    <PlaceHolderActions v-show="!dataLoaded" />
 
-  <ActionModal :text="modalData" @close="closeModal" v-if="showModal" />
+    <div class="text-center px-3 py-4" v-show="dataLoaded && actions.length === 0">
+      <h3>{{ t("texts.noAction") }}</h3>
+      <p>{{ t("texts.createAction") }}</p>
+    </div>
 
-  <CreateActionModal v-if="mainStore.showCreateModal" @close="mainStore.toggleModal" @created="reloadActions" />
+    <ActionModal :text="modalData" @close="closeModal" v-if="showModal" />
+    <CreateActionModal v-if="mainStore.showCreateModal" @close="mainStore.toggleModal" @created="reloadActions" />
+  </main>
+
+
 </template>
 
 <script setup>

@@ -1,8 +1,6 @@
 <template>
   <NotificationLayout />
-  <main class="container mx-auto px-5">
-    <RouterView />
-  </main>
+  <RouterView />
 </template>
 
 <script setup>

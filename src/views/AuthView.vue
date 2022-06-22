@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col min-h-[90vh] md:min-h-[98vh] items-center justify-center">
+  <div class="flex flex-col px-2 min-h-[90vh] md:min-h-[98vh] items-center justify-center">
     <Transition name="home-slide" mode="out-in">
-      <component :is="component" @switch="swithComponent" />
+      <component :is="component" @switch="switchComponent" />
     </Transition>
     <div :dir="direction" class="flex flex-row justify-between w-full max-w-sm py-2 px-3">
       <router-link :to="{ name: 'about' }" class="text-teal-900">{{ t("texts.about") }}</router-link>
@@ -36,7 +36,7 @@ function switchLang() {
   locale.value === 'fa' ? locale.value = 'en' : locale.value = 'fa';
 }
 
-function swithComponent() {
+function switchComponent() {
   showLogin.value = !showLogin.value;
 }
 

@@ -13,6 +13,9 @@
 }
 
 @layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
   input {
 
     background: transparent;

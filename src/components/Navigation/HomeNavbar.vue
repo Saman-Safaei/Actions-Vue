@@ -6,9 +6,9 @@
     <div class="flex-grow"></div>
     <nav class="hidden md:flex flex-row items-center">
       <ul class="flex flex-row items-center h-full gap-3">
-        <li>Preview</li>
-        <li>Features</li>
-        <li>About us</li>
+        <li><router-link class="text-teal-700" to="#preview">Preview</router-link></li>
+        <li><router-link class="text-teal-700" to="#features">Features</router-link></li>
+        <li><router-link class="text-teal-700" to="#about">About Us</router-link></li>
       </ul>
     </nav>
     <div class="hidden md:block md:flex-grow"></div>
@@ -20,7 +20,7 @@
     </div>
 
     <div class="md:hidden flex flex-row items-center">
-      <button @click="mainStore.toggleHomeDrawer()"><DotsVerticalIcon class="w-6 h-6 black"/></button>
+      <button @click="mainStore.toggleHomeDrawer()"><DotsVerticalIcon class="w-7 h-7 black"/></button>
     </div>
   </div>
 </template>
@@ -35,7 +35,5 @@ import { useMainStore } from "../../stores/main";
 const userStore = useUserStore();
 const mainStore = useMainStore();
 
-const signinButtonName = computed(() => {
-  return (userStore.loggingIn) ? "Dashboard" : "Log in";
-});
+const signinButtonName = computed(() => (userStore.loggingIn) ? "Dashboard" : "Log in");
 </script>

@@ -7,7 +7,7 @@
     <span class="grow"></span>
 
     <button class="border-solid border-b-4 border-teal-600" @click="changeLang">{{ locale }}</button>
-    <img class="w-8 h-8" src="@/assets/logo.svg" alt="brand">
+    <router-link :to="{ name: 'home' }"><img class="w-8 h-8" src="@/assets/logo.svg" alt="brand"></router-link>
 
   </div>
 </template>

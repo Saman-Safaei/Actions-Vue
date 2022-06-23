@@ -4,14 +4,14 @@
   </header>
   <main>
 
-    <ActionsLayout v-show="dataLoaded">
+    <ActionsLayout v-show="dataLoaded && haveData">
       <Action v-for="action in actions" :key="action.id" :title='action.title' :img="action.img"
         @img-clicked="openModal(action.id)" @delete="deleteAction(action.id)" />
     </ActionsLayout>
 
     <PlaceHolderActions v-show="!dataLoaded" />
 
-    <div class="text-center px-3 py-4" v-show="dataLoaded && actions.length === 0">
+    <div class="text-center px-3 py-4" v-show="dataLoaded && !haveData">
       <h3>{{ t("texts.noAction") }}</h3>
       <p>{{ t("texts.createAction") }}</p>
     </div>
@@ -36,7 +36,7 @@ import { useUserStore } from '../stores/users';
 import { useMainStore } from '../stores/main';
 import { useAllActions } from '../composables/getActions';
 
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 
@@ -46,6 +46,7 @@ const userStore = useUserStore();
 const mainStore = useMainStore();
 
 const { data: actions, loaded: dataLoaded, load: reloadActions } = useAllActions(router, userStore);
+const haveData = computed(() => data.length !== 0);
 const { t } = useI18n({ useScope: "global" });
 
 // Cards Modal

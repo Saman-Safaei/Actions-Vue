@@ -46,7 +46,7 @@ const userStore = useUserStore();
 const mainStore = useMainStore();
 
 const { data: actions, loaded: dataLoaded, load: reloadActions } = useAllActions(router, userStore);
-const haveData = computed(() => data.length !== 0);
+const haveData = computed(() => actions.length !== 0);
 const { t } = useI18n({ useScope: "global" });
 
 // Cards Modal

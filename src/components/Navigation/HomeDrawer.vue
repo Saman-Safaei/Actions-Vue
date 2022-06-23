@@ -1,5 +1,5 @@
 <template>
-  <Transition name="drawer" duration="1000">
+  <Transition name="drawer" duration="800">
     <div class="fixed inset-0 z-20 bg-white pb-16 overflow-y-auto overflow-x-hidden" v-if="mainStore.showHomeDrawer">
       <div class="drawer-head h-16 px-3 py-4 mb-4 flex flex-row items-center justify-start gap-3">
         <router-link :to="{ name: 'home' }" class="h-full"><img class="h-full" src="../../assets/logo.svg" alt="logo">

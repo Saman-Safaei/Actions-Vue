@@ -39,19 +39,26 @@
       </div>
 
       <div class="drawer-footer fixed bottom-0 right-0 left-0 h-16 bg-slate-200 flex flex-row items-center justify-end gap-3 px-4">
-        <router-link :to="{ name: 'auth' }">Sign up</router-link>
+        <UserCircleIcon class="h-8 w-8 text-gray-500" />
+        <span class="flex-grow"></span>
+        <router-link :to="{ name: 'auth' }" v-if="!userStore.loggingIn">Sign up</router-link>
         <router-link class="bg-teal-600 hover:bg-teal-500 text-white px-2.5 py-1.5 rounded-md transition"
-          :to="{ name: 'auth' }">Login</router-link>
+          :to="{ name: 'auth' }">{{loginButtonName}}</router-link>
       </div>
     </div>
   </Transition>
 </template>
 
 <script setup>
-import { XIcon } from '@heroicons/vue/outline';
+import { XIcon, UserCircleIcon } from '@heroicons/vue/outline';
+import { useUserStore } from "../../stores/users";
 import { useMainStore } from '../../stores/main';
+import { computed } from 'vue';
 
 const mainStore = useMainStore();
+const userStore = useUserStore();
+
+const loginButtonName = computed(() => (userStore.loggingIn) ? "Dashboard" : "Login");
 </script>
 
 <style lang="scss" scoped>

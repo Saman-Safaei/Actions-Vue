@@ -103,7 +103,7 @@ const loginButtonName = computed(() => (userStore.loggingIn) ? "Dashboard" : "Lo
 .drawer-enter-from .drawer-section ,
 .drawer-leave-to .drawer-section {
   opacity: 0;
-  transform: translateX(-100%);
+  transform: translateX(-30%);
 }
 
 .drawer-enter-active .drawer-section ,

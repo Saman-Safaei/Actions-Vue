@@ -14,27 +14,27 @@
       <div class="drawer-section px-4 mb-8">
         <h3 class="text-2xl mb-2 font-bold">Home</h3>
         <div class="px-2">
-          <router-link class="block w-full mb-1 text-teal-800" to="#">Preview</router-link>
-          <router-link class="block w-full mb-1 text-teal-800" to="#">Features</router-link>
-          <router-link class="block w-full mb-1 text-teal-800" to="#">About us</router-link>
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">Preview</router-link>
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">Features</router-link>
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">About us</router-link>
         </div>
       </div>
 
       <div class="drawer-section px-4 mb-8">
         <h3 class="text-2xl mb-2 font-bold">Lorem Ipsum</h3>
         <div class="px-2">
-          <router-link class="block w-full mb-1 text-teal-800" to="#">Lorem</router-link>
-          <router-link class="block w-full mb-1 text-teal-800" to="#">Ipsum</router-link>
-          <router-link class="block w-full mb-1 text-teal-800" to="#">Test Link</router-link>
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">Lorem</router-link>
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">Ipsum</router-link>
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">Test Link</router-link>
         </div>
       </div>
 
       <div class="drawer-section px-4 mb-8">
         <h3 class="text-2xl mb-2 font-bold">Docs</h3>
         <div class="px-2">
-          <router-link class="block w-full mb-1 text-teal-800" to="#">Why Actions Vue</router-link>
-          <router-link class="block w-full mb-1 text-teal-800" to="#">Installation</router-link>
-          <router-link class="block w-full mb-1 text-teal-800" to="#">Getting Started</router-link>
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">Why Actions Vue</router-link>
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">Installation</router-link>
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">Getting Started</router-link>
         </div>
       </div>
 

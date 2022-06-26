@@ -6,9 +6,9 @@
     <div class="flex-grow"></div>
     <nav class="hidden md:flex flex-row items-center">
       <ul class="flex flex-row items-center h-full gap-3">
-        <li><router-link class="text-teal-700" to="#preview">Preview</router-link></li>
-        <li><router-link class="text-teal-700" to="#features">Features</router-link></li>
-        <li><router-link class="text-teal-700" to="#about">About Us</router-link></li>
+        <li><a class="text-teal-700" href="#preview">Preview</a></li>
+        <li><a class="text-teal-700" href="#features">Features</a></li>
+        <li><a class="text-teal-700" href="#about">About Us</a></li>
       </ul>
     </nav>
     <div class="hidden md:block md:flex-grow"></div>

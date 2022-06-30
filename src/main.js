@@ -8,6 +8,7 @@ import Validators from './plugins/vee_rules';
 import i18n from "./i18n";
 
 import "./assets/tailwind.scss";
+import "swiper/css";
 
 const app = createApp(App);
 

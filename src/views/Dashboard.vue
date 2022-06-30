@@ -31,7 +31,6 @@ import ActionModal from '../components/Actions/ActionModal.vue';
 import PlaceHolderActions from '../components/Actions/PlaceHolderActions.vue';
 import CreateActionModal from '../components/Actions/CreateActionModal.vue';
 
-import Actions from '../models/actions';
 import { useUserStore } from '../stores/users';
 import { useMainStore } from '../stores/main';
 import { useAllActions } from '../composables/getActions';
@@ -39,6 +38,7 @@ import { useAllActions } from '../composables/getActions';
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import { useDeleteAction } from '../composables/deleteAction';
 
 
 const router = useRouter();
@@ -62,11 +62,7 @@ function closeModal() {
 }
 
 // Card Actions
-async function deleteAction(id) {
-  await Actions.delete(id);
-  dataLoaded.value = false;
-  reloadActions();
-}
+const { pending: pendingDelete, error: deleteError, deleteAction } = useDeleteAction(reloadActions);
 </script>
 
 <style lang="scss" scoped>

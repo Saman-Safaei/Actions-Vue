@@ -23,14 +23,14 @@
     </div>
   </header>
   <main>
-    <section id="preview" class="max-w-6xl mx-auto px-4 py-8">
-      <h3 class="text-center text-4xl font-bold text-gray-800 mb-4">Preview</h3>
-      <div class="grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-3">
-        <img src="https://picsum.photos/300/300" alt="no alt" class="w-full h-full rounded-md shadow object-cover aspect-square">
-        <img src="https://picsum.photos/300/301" alt="no alt" class="w-full h-full rounded-md shadow object-cover aspect-[1/2] md:aspect-[2/1] row-span-2 md:row-span-1 md:col-span-2">
-        <img src="https://picsum.photos/300/302" alt="no alt" class="w-full h-full rounded-md shadow object-cover aspect-square md:aspect-[2/1] md:col-span-2">
-        <img src="https://picsum.photos/300/303" alt="no alt" class="w-full h-full rounded-md shadow object-cover aspect-[2/1] md:aspect-square col-span-2 md:col-span-1">
-      </div>
+    <section id="preview" class="bg-slate-300">
+
+      <Swiper :slides-per-view="'auto'" :centered-slides="true" :space-between="50" :effect="'coverflow'">
+        <swiper-slide><span>this is good</span></swiper-slide>
+        <swiper-slide><span>thiis is not good</span></swiper-slide>
+        <swiper-slide><span>this is bad</span></swiper-slide>
+      </Swiper>
+
     </section>
   </main>
 </template>
@@ -38,4 +38,6 @@
 <script setup>
 import HomeNavbar from '../components/Navigation/HomeNavbar.vue';
 import HomeDrawer from '../components/Navigation/HomeDrawer.vue';
+
+import { Swiper, SwiperSlide} from "swiper/vue"
 </script>

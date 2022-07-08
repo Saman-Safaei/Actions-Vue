@@ -17,7 +17,6 @@
     -webkit-tap-highlight-color: transparent;
   }
   input {
-
     background: transparent;
 
     &:focus {
@@ -35,7 +34,6 @@
   }
 
   textarea {
-
     background: transparent;
 
     &:focus {
@@ -46,4 +44,17 @@
       outline: none 0;
     }
   }
+}
+
+@keyframes slide-top {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.slide-top {
+  animation: slide-top 300ms 1;
 }

@@ -3,7 +3,7 @@
     <HomeNavbar :class="navbarStyles" />
     <div class="h-16" v-show="navbarFixed"></div>
     <HomeDrawer />
-    <div class="bg-white p-8">
+    <div class="bg-gray-50 p-8">
       <div
         class="flex flex-col md:flex-row items-stretch gap-x-16 gap-y-8 max-w-6xl mx-auto"
       >
@@ -41,14 +41,18 @@
       class="px-4 py-8 flex flex-col items-stretch gap-10 md:gap-14"
     >
       <h3 class="text-center text-2xl md:text-4xl text-gray-600">
-        Features of <span class="text-teal-600">Action-Vue</span>
+        Features of
+        <span
+          class="text-transparent bg-gradient-to-r from-teal-700 to-teal-500 bg-clip-text"
+          >Action Vue</span
+        >
       </h3>
       <div
         class="flex flex-col md:flex-row items-stretch gap-4 max-w-6xl mx-auto"
       >
         <img class="md:max-w-md" src="/images/preview.png" alt="preview" />
         <div class="flex flex-col gap-2 grow py-4">
-          <h3 class="text-xl font-bold">Security</h3>
+          <h3 class="text-xl font-bold">Secure</h3>
           <p class="text-lg text-gray-700">
             Your can easily upload your images with a simple note in our cloud
             database. Your images are secure and not accessible for another
@@ -96,7 +100,7 @@
 <script setup>
 import HomeNavbar from "../components/Navigation/HomeNavbar.vue";
 import HomeDrawer from "../components/Navigation/HomeDrawer.vue";
-import { computed, onMounted, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
 const navbarFixed = ref(false);
 const navbarStyles = computed(() =>
@@ -106,23 +110,25 @@ const navbarStyles = computed(() =>
         "top-0": true,
         "left-0": true,
         "right-0": true,
-        "bg-opacity-70": true,
+        "bg-opacity-80": true,
         "shadow-md": true,
         "slide-top": true,
       }
     : {}
 );
+function onScrollPage() {
+  if (window.scrollY > 200 && !navbarFixed.value) {
+    navbarFixed.value = true;
+  }
+  if (window.scrollY <= 200 && navbarFixed.value) {
+    navbarFixed.value = false;
+  }
+}
 
 onMounted(() => {
   document.addEventListener("scroll", onScrollPage);
-
-  function onScrollPage() {
-    if (window.scrollY > 200 && !navbarFixed.value) {
-      navbarFixed.value = true;
-    }
-    if (window.scrollY <= 200 && navbarFixed.value) {
-      navbarFixed.value = false;
-    }
-  }
+});
+onBeforeUnmount(() => {
+  document.removeEventListener("scroll", onScrollPage);
 });
 </script>

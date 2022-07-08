@@ -5,14 +5,11 @@
     <HomeDrawer />
     <div class="bg-gray-50 p-8">
       <div
-        class="flex flex-col md:flex-row items-stretch gap-x-16 gap-y-8 max-w-6xl mx-auto"
-      >
+        class="flex flex-col md:flex-row items-stretch gap-x-16 gap-y-8 max-w-6xl mx-auto">
         <div
-          class="flex flex-col order-2 md:order-1 gap-3 justify-center items-center md:items-start flex-grow"
-        >
+          class="flex flex-col order-2 md:order-1 gap-3 justify-center items-center md:items-start flex-grow">
           <h1
-            class="text-4xl md:text-5xl font-bold text-transparent text-center md:text-start bg-gradient-to-r from-teal-500 to-teal-400 bg-clip-text"
-          >
+            class="text-4xl md:text-5xl font-bold text-transparent text-center md:text-start bg-gradient-to-r from-teal-500 to-teal-400 bg-clip-text">
             Actions Vue
           </h1>
           <p class="text-lg text-center text-gray-600 md:text-start">
@@ -22,24 +19,21 @@
             aperiam, praesentium unde.
           </p>
           <button
-            class="mt-4 bg-teal-600 hover:bg-teal-500 active:bg-teal-700 text-white px-4 py-2.5 rounded-full transition-all"
-          >
+            class="mt-4 bg-teal-600 hover:bg-teal-500 active:bg-teal-700 text-white px-4 py-2.5 rounded-full transition-all">
             Manage your notes
           </button>
         </div>
         <img
           class="w-10/12 mx-auto md:h-80 md:w-auto drop-shadow-lg order-1 md:order-2"
           src="/images/i_images.svg"
-          alt="logo"
-        />
+          alt="logo" />
       </div>
     </div>
   </header>
   <main>
     <section
       id="features"
-      class="px-4 py-8 flex flex-col items-stretch gap-10 md:gap-14"
-    >
+      class="px-4 py-8 flex flex-col items-stretch gap-10 md:gap-14">
       <h3 class="text-center text-2xl md:text-4xl text-gray-600">
         Features of
         <span
@@ -48,8 +42,7 @@
         >
       </h3>
       <div
-        class="flex flex-col md:flex-row items-stretch gap-4 max-w-6xl mx-auto"
-      >
+        class="flex flex-col md:flex-row items-stretch gap-4 max-w-6xl mx-auto">
         <img class="md:max-w-md" src="/images/preview.png" alt="preview" />
         <div class="flex flex-col gap-2 grow py-4">
           <h3 class="text-xl font-bold">Secure</h3>
@@ -61,8 +54,7 @@
         </div>
       </div>
       <div
-        class="flex flex-col md:flex-row-reverse items-stretch gap-4 max-w-6xl mx-auto"
-      >
+        class="flex flex-col md:flex-row-reverse items-stretch gap-4 max-w-6xl mx-auto">
         <img class="md:max-w-md" src="/images/preview.png" alt="preview" />
         <div class="flex flex-col gap-2 grow py-4">
           <h3 class="text-xl font-bold">Easy to use</h3>
@@ -77,8 +69,7 @@
         </div>
       </div>
       <div
-        class="flex flex-col md:flex-row items-stretch gap-4 max-w-6xl mx-auto"
-      >
+        class="flex flex-col md:flex-row items-stretch gap-4 max-w-6xl mx-auto">
         <img class="md:max-w-md" src="/images/preview.png" alt="preview" />
         <div class="flex flex-col gap-2 grow py-4">
           <h3 class="text-xl font-bold">Fast</h3>
@@ -98,21 +89,21 @@
 </template>
 
 <script setup>
-import HomeNavbar from "../components/Navigation/HomeNavbar.vue";
-import HomeDrawer from "../components/Navigation/HomeDrawer.vue";
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
+import HomeNavbar from '../components/Navigation/HomeNavbar.vue';
+import HomeDrawer from '../components/Navigation/HomeDrawer.vue';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
 const navbarFixed = ref(false);
 const navbarStyles = computed(() =>
   navbarFixed.value
     ? {
         fixed: true,
-        "top-0": true,
-        "left-0": true,
-        "right-0": true,
-        "bg-opacity-80": true,
-        "shadow-md": true,
-        "slide-top": true,
+        'top-0': true,
+        'left-0': true,
+        'right-0': true,
+        'bg-opacity-80': true,
+        'shadow-md': true,
+        'slide-top': true,
       }
     : {}
 );
@@ -126,9 +117,9 @@ function onScrollPage() {
 }
 
 onMounted(() => {
-  document.addEventListener("scroll", onScrollPage);
+  document.addEventListener('scroll', onScrollPage);
 });
 onBeforeUnmount(() => {
-  document.removeEventListener("scroll", onScrollPage);
+  document.removeEventListener('scroll', onScrollPage);
 });
 </script>

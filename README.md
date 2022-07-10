@@ -1,5 +1,5 @@
 # Actions Node
-This project requires one environment variables to start :
+This project requires one environment variable to start :
 - VITE_API
 
 ## Commands

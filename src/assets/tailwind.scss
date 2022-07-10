@@ -57,7 +57,7 @@
 
 @keyframes fade-show {
   from {
-    transform: translateY(2rem);
+    transform: translateY(3rem);
     opacity: 0;
   }
   to {
@@ -71,5 +71,5 @@
 }
 
 .fade-show {
-  animation: fade-show 500ms 1;
+  animation: fade-show 700ms 1;
 }

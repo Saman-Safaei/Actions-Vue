@@ -1,15 +1,15 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 @font-face {
   font-family: vazir;
-  src: url("./font_vazir.ttf");
+  src: url('./font_vazir.ttf');
 }
 
 @font-face {
   font-family: shabnam;
-  src: url("./font_shabnam.ttf");
+  src: url('./font_shabnam.ttf');
 }
 
 @layer base {
@@ -55,6 +55,21 @@
   }
 }
 
+@keyframes fade-show {
+  from {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .slide-top {
   animation: slide-top 300ms 1;
+}
+
+.fade-show {
+  animation: fade-show 500ms 1;
 }

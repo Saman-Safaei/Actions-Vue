@@ -5,6 +5,7 @@
     <HomeDrawer />
     <div class="bg-gray-50 p-8">
       <div
+        :dir="direction"
         class="flex flex-col md:flex-row items-stretch gap-x-16 gap-y-8 max-w-6xl mx-auto">
         <div
           class="flex flex-col order-2 md:order-1 gap-3 justify-center items-center md:items-start flex-grow">
@@ -13,14 +14,11 @@
             Actions Vue
           </h1>
           <p class="text-lg text-center text-gray-600 md:text-start">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-            eveniet quo repellendus. Nisi quos voluptas maxime ab doloremque nam
-            officiis qui aspernatur eius soluta natus quae, reprehenderit
-            aperiam, praesentium unde.
+            {{ t('texts.headerText') }}
           </p>
           <button
             class="mt-4 bg-teal-600 hover:bg-teal-500 active:bg-teal-700 text-white px-4 py-2.5 rounded-full transition-all">
-            Manage your notes
+            {{ t('buttons.headerManage') }}
           </button>
         </div>
         <img
@@ -34,8 +32,10 @@
     <section
       id="features"
       class="px-4 py-8 flex flex-col items-stretch gap-10 md:gap-14">
-      <h3 class="text-center text-2xl md:text-4xl text-gray-600">
-        Features of
+      <h3
+        :dir="direction"
+        class="text-center text-2xl md:text-4xl text-gray-600">
+        {{ t('texts.featuresTitle') }}
         <span
           class="text-transparent bg-gradient-to-r from-teal-700 to-teal-500 bg-clip-text"
           >Action Vue</span
@@ -43,44 +43,43 @@
       </h3>
       <div
         class="flex flex-col md:flex-row items-stretch gap-4 max-w-6xl mx-auto">
-        <img class="md:max-w-md" src="/images/preview.png" alt="preview" />
+        <div class="w-full md:w-auto md:min-w-[42%]">
+          <img class="w-full" src="/images/preview.png" alt="preview" />
+        </div>
         <div class="flex flex-col gap-2 grow py-4">
-          <h3 class="text-xl font-bold">Secure</h3>
-          <p class="text-lg text-gray-700">
-            Your can easily upload your images with a simple note in our cloud
-            database. Your images are secure and not accessible for another
-            people.
+          <h3 :dir="direction" class="text-xl font-bold text-gray-800">
+            {{ t('texts.secureTitle') }}
+          </h3>
+          <p :dir="direction" class="text-lg text-gray-700">
+            {{ t('texts.secureText') }}
           </p>
         </div>
       </div>
       <div
-        class="flex flex-col md:flex-row-reverse items-stretch gap-4 max-w-6xl mx-auto">
-        <img class="md:max-w-md" src="/images/preview.png" alt="preview" />
+        class="flex flex-col md:flex-row-reverse items-stretch gap-4 max-w-6xl mx-auto invisible animated">
+        <div class="w-full md:w-auto md:min-w-[42%]">
+          <img class="w-full" src="/images/preview.png" alt="preview" />
+        </div>
         <div class="flex flex-col gap-2 grow py-4">
-          <h3 class="text-xl font-bold">Easy to use</h3>
-          <p class="text-lg text-gray-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
+          <h3 :dir="direction" class="text-xl font-bold text-gray-800">
+            {{ t('texts.easyToUseTitle') }}
+          </h3>
+          <p :dir="direction" class="text-lg text-gray-700">
+            {{ t('texts.easyToUseText') }}
           </p>
         </div>
       </div>
       <div
-        class="flex flex-col md:flex-row items-stretch gap-4 max-w-6xl mx-auto">
-        <img class="md:max-w-md" src="/images/preview.png" alt="preview" />
+        class="flex flex-col md:flex-row items-stretch gap-4 max-w-6xl mx-auto invisible animated">
+        <div class="w-full md:w-auto md:min-w-[42%]">
+          <img class="w-full" src="/images/preview.png" alt="preview" />
+        </div>
         <div class="flex flex-col gap-2 grow py-4">
-          <h3 class="text-xl font-bold">Fast</h3>
-          <p class="text-lg text-gray-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+          <h3 :dir="direction" class="text-xl font-bold text-gray-800">
+            {{ t('texts.fastTitle') }}
+          </h3>
+          <p :dir="direction" class="text-lg text-gray-700">
+            {{ t('texts.fastText') }}
           </p>
         </div>
       </div>
@@ -92,6 +91,11 @@
 import HomeNavbar from '../components/Navigation/HomeNavbar.vue';
 import HomeDrawer from '../components/Navigation/HomeDrawer.vue';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { useLocale } from '../composables/locale';
+
+const { t, direction } = useLocale();
+
+let animatedElems = null;
 
 const navbarFixed = ref(false);
 const navbarStyles = computed(() =>
@@ -102,21 +106,35 @@ const navbarStyles = computed(() =>
         'left-0': true,
         'right-0': true,
         'bg-opacity-80': true,
-        'shadow-md': true,
+        shadow: true,
         'slide-top': true,
       }
     : {}
 );
 function onScrollPage() {
+  // for navbar
   if (window.scrollY > 200 && !navbarFixed.value) {
     navbarFixed.value = true;
   }
   if (window.scrollY <= 200 && navbarFixed.value) {
     navbarFixed.value = false;
   }
+  // for animated elements
+  for (let i = 0; i < animatedElems.length; i++) {
+    const elemDistance =
+      window.pageYOffset + animatedElems[i].getBoundingClientRect().top;
+    if (
+      elemDistance < window.scrollY + window.innerHeight - 200 &&
+      animatedElems[i].classList.contains('animated')
+    ) {
+      animatedElems[i].classList.remove('invisible', 'animated');
+      animatedElems[i].classList.add('fade-show');
+    }
+  }
 }
 
 onMounted(() => {
+  animatedElems = document.querySelectorAll('.animated');
   document.addEventListener('scroll', onScrollPage);
 });
 onBeforeUnmount(() => {

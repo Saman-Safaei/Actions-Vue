@@ -42,7 +42,7 @@
         >
       </h3>
       <div
-        class="flex flex-col md:flex-row items-stretch gap-4 max-w-6xl mx-auto">
+        class="flex flex-col md:flex-row items-stretch gap-4 max-w-6xl mx-auto invisible animated">
         <div class="w-full md:w-auto md:min-w-[42%]">
           <img class="w-full" src="/images/preview.png" alt="preview" />
         </div>
@@ -92,10 +92,10 @@ import HomeNavbar from '../components/Navigation/HomeNavbar.vue';
 import HomeDrawer from '../components/Navigation/HomeDrawer.vue';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useLocale } from '../composables/locale';
+import { useAnimate } from '../composables/useAnimate';
 
 const { t, direction } = useLocale();
-
-let animatedElems = null;
+const { animate } = useAnimate();
 
 const navbarFixed = ref(false);
 const navbarStyles = computed(() =>
@@ -119,25 +119,10 @@ function onScrollPage() {
   if (window.scrollY <= 200 && navbarFixed.value) {
     navbarFixed.value = false;
   }
-  // for animated elements
-  for (let i = 0; i < animatedElems.length; i++) {
-    const elemDistance =
-      window.pageYOffset + animatedElems[i].getBoundingClientRect().top;
-    if (
-      elemDistance < window.scrollY + window.innerHeight - 200 &&
-      animatedElems[i].classList.contains('animated')
-    ) {
-      animatedElems[i].classList.remove('invisible', 'animated');
-      animatedElems[i].classList.add('fade-show');
-    }
-  }
+  // animate scrolling elements
+  animate();
 }
 
-onMounted(() => {
-  animatedElems = document.querySelectorAll('.animated');
-  document.addEventListener('scroll', onScrollPage);
-});
-onBeforeUnmount(() => {
-  document.removeEventListener('scroll', onScrollPage);
-});
+onMounted(() => document.addEventListener('scroll', onScrollPage));
+onBeforeUnmount(() => document.removeEventListener('scroll', onScrollPage));
 </script>

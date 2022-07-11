@@ -38,5 +38,6 @@ export default {
     previewTitle: 'Preview of',
     headerText:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni eveniet quo repellendus. Nisi quos voluptas maxime ab doloremque nam officiis qui aspernatur eius soluta natus quae, reprehenderit aperiam, praesentium unde.',
+    homeTitle: 'Home',
   },
 };

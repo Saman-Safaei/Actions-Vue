@@ -45,7 +45,7 @@
         class="max-w-6xl w-full mx-auto rounded-lg shadow-md"
         controls
         poster="/images/previewPoster.jpg"
-        preload="none">
+        preload="metadata">
         <source src="/videos/preview.mp4" />
       </video>
     </section>

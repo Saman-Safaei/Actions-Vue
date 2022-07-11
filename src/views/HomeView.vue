@@ -30,6 +30,26 @@
   </header>
   <main>
     <section
+      id="preview"
+      class="px-4 py-8 flex flex-col items-stretch gap-10 md:gap-14">
+      <h3
+        :dir="direction"
+        class="text-center text-2xl md:text-4xl text-gray-600">
+        {{ t('texts.previewTitle') }}
+        <span
+          class="text-transparent bg-gradient-to-r from-teal-700 to-teal-500 bg-clip-text"
+          >Action Vue</span
+        >
+      </h3>
+      <video
+        class="max-w-6xl w-full mx-auto rounded-lg"
+        controls
+        poster="/images/previewPoster.jpg"
+        preload="none">
+        <source src="/videos/preview.mp4" />
+      </video>
+    </section>
+    <section
       id="features"
       class="px-4 py-8 flex flex-col items-stretch gap-10 md:gap-14">
       <h3

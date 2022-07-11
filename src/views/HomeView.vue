@@ -42,7 +42,7 @@
         >
       </h3>
       <video
-        class="max-w-6xl w-full mx-auto rounded-lg"
+        class="max-w-6xl w-full mx-auto rounded-lg shadow-md"
         controls
         poster="/images/previewPoster.jpg"
         preload="none">
@@ -118,19 +118,8 @@ const { t, direction } = useLocale();
 const { animate } = useAnimate();
 
 const navbarFixed = ref(false);
-const navbarStyles = computed(() =>
-  navbarFixed.value
-    ? {
-        fixed: true,
-        'top-0': true,
-        'left-0': true,
-        'right-0': true,
-        'bg-opacity-80': true,
-        shadow: true,
-        'slide-top': true,
-      }
-    : {}
-);
+const navbarStyles = computed(() => navbarFixed.value ? ['fixed', 'top-0', 'left-0', 'right-0','bg-opacity-80', 'shadow', 'slide-top'] : [] ); // prettier-ignore
+
 function onScrollPage() {
   // for navbar
   if (window.scrollY > 200 && !navbarFixed.value) {

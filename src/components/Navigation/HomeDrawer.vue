@@ -2,17 +2,14 @@
   <Transition name="drawer" duration="800">
     <div
       class="fixed inset-0 z-20 bg-white pb-16 overflow-y-auto overflow-x-hidden"
-      v-if="mainStore.showHomeDrawer"
-    >
+      v-if="mainStore.showHomeDrawer">
       <div
-        class="drawer-head h-16 px-3 py-4 mb-4 flex flex-row items-center justify-start gap-3"
-      >
+        class="drawer-head h-16 px-3 py-4 mb-4 flex flex-row items-center justify-start gap-3">
         <router-link :to="{ name: 'home' }" class="h-full"
           ><img class="h-full" src="../../assets/logo.svg" alt="logo" />
         </router-link>
         <p
-          class="text-transparent bg-gradient-to-r from-teal-600 to-teal-400 bg-clip-text text-lg"
-        >
+          class="text-transparent bg-gradient-to-r from-teal-600 to-teal-400 bg-clip-text text-lg">
           Actions Vue
         </p>
         <span class="flex-grow"></span>
@@ -21,29 +18,29 @@
         </button>
       </div>
 
-      <div class="drawer-section px-4 mb-8">
-        <h3 class="text-2xl mb-2 font-bold">Home</h3>
+      <div class="drawer-section px-4 mb-8" :dir="direction">
+        <h3 class="text-2xl mb-2 font-bold">{{ t('texts.homeTitle') }}</h3>
         <div class="px-2">
           <HomeDrawerLink
             type="a"
             class="block w-full mb-1 text-teal-800 text-lg"
             href="#preview"
             tapped="enabled"
-            >Preview</HomeDrawerLink
+            >{{ t('buttons.preview') }}</HomeDrawerLink
           >
           <HomeDrawerLink
             type="a"
             class="block w-full mb-1 text-teal-800 text-lg"
             href="#features"
             tapped="enabled"
-            >Features</HomeDrawerLink
+            >{{ t('buttons.features') }}</HomeDrawerLink
           >
           <HomeDrawerLink
             type="a"
             class="block w-full mb-1 text-teal-800 text-lg"
             href="#about"
             tapped="enabled"
-            >About us</HomeDrawerLink
+            >{{ t('buttons.about') }}</HomeDrawerLink
           >
         </div>
       </div>
@@ -79,8 +76,7 @@
       </div>
 
       <div
-        class="drawer-footer fixed bottom-0 right-0 left-0 h-16 bg-slate-200 flex flex-row items-center justify-end gap-3 px-4"
-      >
+        class="drawer-footer fixed bottom-0 right-0 left-0 h-16 bg-slate-200 flex flex-row items-center justify-end gap-3 px-4">
         <UserCircleIcon class="h-8 w-8 text-gray-500" />
         <span class="flex-grow"></span>
         <router-link :to="{ name: 'auth' }" v-if="!userStore.loggingIn"
@@ -97,17 +93,19 @@
 </template>
 
 <script setup>
-import { XIcon, UserCircleIcon } from "@heroicons/vue/outline";
-import HomeDrawerLink from "./HomeDrawerLink.vue";
-import { useUserStore } from "../../stores/users";
-import { useMainStore } from "../../stores/main";
-import { computed } from "vue";
+import { XIcon, UserCircleIcon } from '@heroicons/vue/outline';
+import HomeDrawerLink from './HomeDrawerLink.vue';
+import { useUserStore } from '../../stores/users';
+import { useMainStore } from '../../stores/main';
+import { useLocale } from '../../composables/locale';
+import { computed } from 'vue';
 
 const mainStore = useMainStore();
 const userStore = useUserStore();
+const { t, direction } = useLocale();
 
 const loginButtonName = computed(() =>
-  userStore.loggingIn ? "Dashboard" : "Login"
+  userStore.loggingIn ? 'Dashboard' : 'Login'
 );
 </script>
 

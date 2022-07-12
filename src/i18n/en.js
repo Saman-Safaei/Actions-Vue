@@ -11,6 +11,10 @@ export default {
     features: 'Features',
     about: 'About us',
     headerManage: 'Manage your photos',
+    dashboard: 'Dashboard',
+    lorem: 'Lorem',
+    ipsum: 'Ipsum',
+    test: 'Test',
   },
   texts: {
     haveAccount: 'Have an account ?',
@@ -39,5 +43,7 @@ export default {
     headerText:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni eveniet quo repellendus. Nisi quos voluptas maxime ab doloremque nam officiis qui aspernatur eius soluta natus quae, reprehenderit aperiam, praesentium unde.',
     homeTitle: 'Home',
+    loremTitle: 'Lorem Ipsum',
+    aboutTitle: 'About us',
   },
 };

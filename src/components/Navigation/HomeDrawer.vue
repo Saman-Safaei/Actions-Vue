@@ -45,33 +45,33 @@
         </div>
       </div>
 
-      <div class="drawer-section px-4 mb-8">
-        <h3 class="text-2xl mb-2 font-bold">Lorem Ipsum</h3>
+      <div class="drawer-section px-4 mb-8" :dir="direction">
+        <h3 class="text-2xl mb-2 font-bold">{{ t('texts.loremTitle') }}</h3>
         <div class="px-2">
-          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#"
-            >Lorem</router-link
-          >
-          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#"
-            >Ipsum</router-link
-          >
-          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#"
-            >Test Link</router-link
-          >
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">{{
+            t('buttons.lorem')
+          }}</router-link>
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">{{
+            t('buttons.ipsum')
+          }}</router-link>
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">{{
+            t('buttons.test')
+          }}</router-link>
         </div>
       </div>
 
-      <div class="drawer-section px-4 mb-8">
-        <h3 class="text-2xl mb-2 font-bold">Lorem Ipsum</h3>
+      <div class="drawer-section px-4 mb-8" :dir="direction">
+        <h3 class="text-2xl mb-2 font-bold">{{ t('texts.loremTitle') }}</h3>
         <div class="px-2">
-          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#"
-            >Why Actions Vue</router-link
-          >
-          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#"
-            >Lorem Installation</router-link
-          >
-          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#"
-            >Lorem ipsum</router-link
-          >
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">{{
+            t('buttons.lorem')
+          }}</router-link>
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">{{
+            t('buttons.ipsum')
+          }}</router-link>
+          <router-link class="block w-full mb-1 text-teal-800 text-lg" to="#">{{
+            t('buttons.test')
+          }}</router-link>
         </div>
       </div>
 
@@ -79,8 +79,8 @@
         class="drawer-footer fixed bottom-0 right-0 left-0 h-16 bg-slate-200 flex flex-row items-center justify-end gap-3 px-4">
         <UserCircleIcon class="h-8 w-8 text-gray-500" />
         <span class="flex-grow"></span>
-        <router-link :to="{ name: 'auth' }" v-if="!userStore.loggingIn"
-          >Sign up</router-link
+        <router-link :to="{ name: 'auth' }" v-if="!userStore.loggingIn">
+          {{ t('buttons.signup') }}</router-link
         >
         <router-link
           class="bg-teal-600 hover:bg-teal-500 text-white px-2.5 py-1.5 rounded-md transition"
@@ -105,7 +105,7 @@ const userStore = useUserStore();
 const { t, direction } = useLocale();
 
 const loginButtonName = computed(() =>
-  userStore.loggingIn ? 'Dashboard' : 'Login'
+  userStore.loggingIn ? t('buttons.dashboard') : t('buttons.login')
 );
 </script>
 

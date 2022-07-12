@@ -11,7 +11,7 @@
         class="absolute top-1/2 -translate-y-1/2 w-6 h-6"
         :class="direction === 'rtl' ? ['left-4'] : ['right-4']" />
     </div>
-    <div class="p-4 bg-gray-100 rounded-b-md" v-show="isOpen">
+    <div class="p-4 bg-gray-50 rounded-b-md" v-show="isOpen">
       <p :dir="direction"><slot name="text"></slot></p>
     </div>
   </div>

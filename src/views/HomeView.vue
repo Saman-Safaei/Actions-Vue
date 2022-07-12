@@ -104,12 +104,28 @@
         </div>
       </div>
     </section>
+    <section id="about" class="px-4 py-8 flex flex-col items-stretch gap-4">
+      <h3
+        :dir="direction"
+        class="text-center text-2xl md:text-4xl text-gray-600 mb-6">
+        {{ t('texts.aboutTitle') }}
+      </h3>
+      <Accordion class="max-w-6xl mx-auto">
+        <template v-slot:title>{{ t('texts.loremTitle') }}</template>
+        <template v-slot:text>{{ t('texts.easyToUseText') }}</template>
+      </Accordion>
+      <Accordion class="max-w-6xl mx-auto">
+        <template v-slot:title>{{ t('texts.loremTitle') }}</template>
+        <template v-slot:text>{{ t('texts.easyToUseText') }}</template>
+      </Accordion>
+    </section>
   </main>
 </template>
 
 <script setup>
 import HomeNavbar from '../components/Navigation/HomeNavbar.vue';
 import HomeDrawer from '../components/Navigation/HomeDrawer.vue';
+import Accordion from '../components/Buttons/Accordion.vue';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useLocale } from '../composables/locale';
 import { useAnimate } from '../composables/useAnimate';

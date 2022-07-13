@@ -1,28 +1,30 @@
 import { onMounted } from 'vue';
 
 export function useAnimate() {
-  const { innerHeight, scrollY } = window;
-  let animatedElems = null;
+  let animatedElems = [];
 
   onMounted(() => {
-    animatedElems = [...document.querySelectorAll('.animated')];
+    animatedElems = [...document.getElementsByClassName('animated')];
     animate();
   });
 
   function animate() {
-    for (let i = 0; i < animatedElems.length; i++) {
-      const animatedElem = animatedElems[i];
-      const elemDistance = scrollY + animatedElem.getBoundingClientRect().top;
+    const { innerHeight, scrollY } = window;
+
+    animatedElems.forEach(element => {
+      const elemDistance = scrollY + element.getBoundingClientRect().top;
 
       if (
-        elemDistance < scrollY + innerHeight - 200 &&
-        animatedElem.classList.contains('animated')
+        elemDistance < scrollY + innerHeight - 150 &&
+        element.classList.contains('animated')
       ) {
-        animatedElem.classList.remove('invisible', 'animated');
-        animatedElem.classList.add('fade-show');
-        animatedElems = animatedElems.filter(value => value !== animatedElem);
+        element.classList.remove('invisible', 'animated');
+        element.classList.add('fade-show');
+        animatedElems = animatedElems.filter(
+          filteredElem => filteredElem !== element
+        );
       }
-    }
+    });
   }
 
   return { animate };

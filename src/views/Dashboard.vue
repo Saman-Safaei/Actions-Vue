@@ -36,7 +36,6 @@ import Action from '../components/Actions/Action.vue';
 import ActionModal from '../components/Actions/ActionModal.vue';
 import PlaceHolderActions from '../components/Actions/PlaceHolderActions.vue';
 import CreateActionModal from '../components/Actions/CreateActionModal.vue';
-import { Collapse } from 'ant-design-vue';
 
 import { useUserStore } from '../stores/users';
 import { useMainStore } from '../stores/main';

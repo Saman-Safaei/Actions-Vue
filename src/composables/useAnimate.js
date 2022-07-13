@@ -21,7 +21,6 @@ export function useAnimate() {
         animatedElem.classList.remove('invisible', 'animated');
         animatedElem.classList.add('fade-show');
         animatedElems = animatedElems.filter(value => value !== animatedElem);
-        console.log(animatedElems);
       }
     }
   }

@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-row flex-nowrap gap-2 px-3 py-4 mb-2 bg-gradient-to-tr from-teal-500 to-teal-600 rounded-l-lg">
+  <div class="flex flex-row flex-nowrap items-center gap-2 px-3 py-4 mb-2 bg-gradient-to-tr from-teal-500 to-teal-600 rounded-l-lg">
     <button @click="store.removeNotif(props.nId)" class="text-lime-200 shrink">x</button>
-    <p class="text-center text-lime-50 grow"><slot></slot></p>
+    <p class="text-center text-lime-50 grow m-0"><slot></slot></p>
   </div>
 </template>
 

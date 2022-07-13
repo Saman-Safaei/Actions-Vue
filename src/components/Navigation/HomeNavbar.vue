@@ -15,7 +15,7 @@
       </button>
     </div>
     <div class="flex-grow"></div>
-    <nav :dir="direction" class="hidden md:flex flex-row items-center">
+    <nav :dir="direction" class="hidden md:flex flex-row items-stretch">
       <ul class="flex flex-row items-center h-full gap-3">
         <li>
           <a class="text-teal-700" href="#preview">{{
@@ -44,7 +44,7 @@
         Log out
       </button>
       <router-link
-        class="bg-teal-600 hover:bg-teal-500 text-white py-1.5 px-2 rounded-md transition"
+        class="bg-teal-600 hover:bg-teal-500 !text-white py-1.5 px-2 rounded-md transition"
         :to="{ name: 'auth' }"
         >{{ signinButtonName }}</router-link
       >

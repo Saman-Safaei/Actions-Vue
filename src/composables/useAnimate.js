@@ -5,7 +5,7 @@ export function useAnimate() {
   let animatedElems = null;
 
   onMounted(() => {
-    animatedElems = document.querySelectorAll('.animated');
+    animatedElems = [...document.querySelectorAll('.animated')];
     animate();
   });
 
@@ -18,8 +18,10 @@ export function useAnimate() {
         elemDistance < scrollY + innerHeight - 200 &&
         animatedElem.classList.contains('animated')
       ) {
-        animatedElems[i].classList.remove('invisible', 'animated');
-        animatedElems[i].classList.add('fade-show');
+        animatedElem.classList.remove('invisible', 'animated');
+        animatedElem.classList.add('fade-show');
+        animatedElems = animatedElems.filter(value => value !== animatedElem);
+        console.log(animatedElems);
       }
     }
   }

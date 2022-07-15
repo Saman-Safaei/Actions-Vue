@@ -7,6 +7,7 @@ import router from './router';
 import Validators from './plugins/vee_rules';
 import i18n from './i18n';
 
+import './assets/fonts.scss';
 import './assets/tailwind.scss';
 import 'swiper/css';
 

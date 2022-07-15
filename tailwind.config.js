@@ -7,6 +7,13 @@ module.exports = {
       xs: '475px',
       ...defaultTheme.screens,
     },
+    extend: {
+      fontFamily: {
+        sans: ['shabnam', ...defaultTheme.fontFamily.sans],
+        serif: [...defaultTheme.fontFamily.serif],
+        mono: [...defaultTheme.fontFamily.mono],
+      },
+    },
   },
   plugins: [],
 };

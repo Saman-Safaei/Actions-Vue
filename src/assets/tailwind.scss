@@ -2,16 +2,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@font-face {
-  font-family: vazir;
-  src: url('./font_vazir.ttf');
-}
-
-@font-face {
-  font-family: shabnam;
-  src: url('./font_shabnam.ttf');
-}
-
 @layer base {
   * {
     -webkit-tap-highlight-color: transparent;
@@ -30,7 +20,6 @@
 
   html {
     overflow-x: hidden;
-    font-family: shabnam;
     scroll-behavior: smooth;
   }
 

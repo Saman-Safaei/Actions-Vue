@@ -15,8 +15,8 @@
           class="h-5 w-5 text-gray-700 cursor-pointer"
           @click="emits('delete')" />
         <a class="cursor-pointer" :href="img" download
-          ><DownloadIcon class="h-5 w-5 text-gray-700" @click="emits('update')"
-        /></a>
+          ><DownloadIcon class="h-5 w-5 text-gray-700" />
+        </a>
         <PencilIcon
           class="h-5 w-5 text-gray-700 cursor-pointer"
           @click="emits('edit')" />
@@ -33,7 +33,7 @@ import { useUserStore } from '../../stores/users';
 
 const userStore = useUserStore();
 const props = defineProps(['img', 'title', 'body', 'id']);
-const emits = defineEmits(['imgClicked', 'delete']);
+const emits = defineEmits(['imgClicked', 'delete', 'edit']);
 
 const img = computed(() => {
   return baseURL + '/files/' + props.img + '/?token=' + userStore.token;

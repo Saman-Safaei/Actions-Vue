@@ -15,6 +15,7 @@ export default {
     lorem: 'لورم',
     ipsum: 'ایپسام',
     test: 'آزمایشی',
+    home: 'بازگشت به صفحه اصلی',
   },
   texts: {
     haveAccount: 'قبلا ثبت نام کرده اید ؟',

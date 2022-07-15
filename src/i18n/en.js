@@ -15,6 +15,7 @@ export default {
     lorem: 'Lorem',
     ipsum: 'Ipsum',
     test: 'Test',
+    home: 'Return to homepage',
   },
   texts: {
     haveAccount: 'Have an account ?',

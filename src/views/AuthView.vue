@@ -21,7 +21,7 @@
   <ActionModal
     :center="true"
     v-if="showMessage"
-    text="Make sure of your enabled VPN\nمطمئن شوید به فیلتر شکن متصل اید"
+    :text="'Make sure of your enabled VPN\nمطمئن شوید به فیلتر شکن متصل اید'"
     @close="closeMessage" />
   <div
     class="fixed inset-0 bg-gradient-to-tr from-teal-300 to-teal-100 -z-20"></div>

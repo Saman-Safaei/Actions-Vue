@@ -1,16 +1,14 @@
 <template>
   <div
-    class="flex flex-row justify-start items-stretch h-16 bg-gray-50 backdrop-blur-sm z-[8] px-3"
-    v-bind="$attrs"
-  >
+    class="flex flex-row justify-start items-stretch h-16 bg-white backdrop-blur-sm z-[8] px-3"
+    v-bind="$attrs">
     <div class="flex flex-row items-center py-4 gap-2 h-full">
       <router-link :to="{ name: 'home' }" class="h-full"
         ><img class="h-full" src="../../assets/logo.svg" alt="logo" />
       </router-link>
       <button
         class="border-solid border-b-4 border-teal-700"
-        @click="switchLang"
-      >
+        @click="switchLang">
         {{ locale.toUpperCase() }}
       </button>
     </div>
@@ -19,17 +17,17 @@
       <ul class="flex flex-row items-center h-full gap-3">
         <li>
           <a class="text-teal-700" href="#preview">{{
-            t("buttons.preview")
+            t('buttons.preview')
           }}</a>
         </li>
         <li>
           <a class="text-teal-700" href="#features">{{
-            t("buttons.features")
+            t('buttons.features')
           }}</a>
         </li>
         <li>
           <a class="text-teal-700" href="#about">
-            {{ t("buttons.about") }}
+            {{ t('buttons.about') }}
           </a>
         </li>
       </ul>
@@ -39,8 +37,7 @@
       <button
         class="py-1.5 px-2.5 rounded-md transition duration-300"
         @click="userStore.logOut()"
-        v-if="userStore.loggingIn"
-      >
+        v-if="userStore.loggingIn">
         Log out
       </button>
       <router-link
@@ -59,12 +56,12 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed } from 'vue';
 
-import { DotsVerticalIcon } from "@heroicons/vue/outline";
-import { useUserStore } from "../../stores/users";
-import { useMainStore } from "../../stores/main";
-import { useLocale } from "../../composables/locale";
+import { DotsVerticalIcon } from '@heroicons/vue/outline';
+import { useUserStore } from '../../stores/users';
+import { useMainStore } from '../../stores/main';
+import { useLocale } from '../../composables/locale';
 
 const userStore = useUserStore();
 const mainStore = useMainStore();
@@ -72,6 +69,6 @@ const mainStore = useMainStore();
 const { locale, switchLang, t, direction } = useLocale();
 
 const signinButtonName = computed(() =>
-  userStore.loggingIn ? "Dashboard" : t("buttons.login")
+  userStore.loggingIn ? 'Dashboard' : t('buttons.login')
 );
 </script>

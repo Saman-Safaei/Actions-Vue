@@ -1,12 +1,25 @@
 <template>
   <div class="relative w-full overflow-hidden rounded-md shadow">
-    <img class="object-cover block w-full aspect-square cursor-pointer z-0" :src="img" @click="emits('imgClicked')" :alt="props.title">
-    <div class="flex flex-row justify-start items-center gap-1 p-3 absolute bottom-0 right-0 left-0 z-10 bg-content shadow-[0_-2px_8px_0_rgba(0,0,0,0.1)]">
-      <h4 class="grow overflow-hidden whitespace-nowrap text-ellipsis">{{ props.title }}</h4>
+    <img
+      class="object-cover block w-full aspect-square cursor-pointer z-0"
+      :src="img"
+      @click="emits('imgClicked')"
+      :alt="props.title" />
+    <div
+      class="flex flex-row justify-start items-center gap-1 p-3 absolute bottom-0 right-0 left-0 z-10 bg-content shadow-[0_-2px_8px_0_rgba(0,0,0,0.1)]">
+      <h4 class="grow overflow-hidden whitespace-nowrap text-ellipsis">
+        {{ props.title }}
+      </h4>
       <span class="flex flex-row justify-end items-center gap-1">
-        <TrashIcon class="h-5 w-5 text-gray-700 cursor-pointer" @click="emits('delete')" />
-        <UploadIcon class="h-5 w-5 text-gray-700 cursor-pointer" @click="emits('update')" />
-        <PencilIcon class="h-5 w-5 text-gray-700 cursor-pointer" @click="emits('edit')" />
+        <TrashIcon
+          class="h-5 w-5 text-gray-700 cursor-pointer"
+          @click="emits('delete')" />
+        <DownloadIcon
+          class="h-5 w-5 text-gray-700 cursor-pointer"
+          @click="emits('update')" />
+        <PencilIcon
+          class="h-5 w-5 text-gray-700 cursor-pointer"
+          @click="emits('edit')" />
       </span>
     </div>
   </div>
@@ -15,15 +28,15 @@
 <script setup>
 import { computed } from 'vue';
 import { baseURL } from '../../api';
-import { TrashIcon, UploadIcon, PencilIcon } from "@heroicons/vue/outline";
+import { TrashIcon, DownloadIcon, PencilIcon } from '@heroicons/vue/outline';
 import { useUserStore } from '../../stores/users';
 
 const userStore = useUserStore();
-const props = defineProps(["img", "title", "body", "id"]);
-const emits = defineEmits(["imgClicked", "delete"]);
+const props = defineProps(['img', 'title', 'body', 'id']);
+const emits = defineEmits(['imgClicked', 'delete']);
 
 const img = computed(() => {
-  return baseURL + "/files/" + props.img + "/?token=" + userStore.token;
+  return baseURL + '/files/' + props.img + '/?token=' + userStore.token;
 });
 </script>
 

@@ -23,6 +23,6 @@ const props = defineProps(['text', 'center']);
 const emits = defineEmits(['close']);
 
 const center = computed(() => ({ 'text-center': props.center }));
-const paragraphs = computed(() => props.text.value.split('\n'));
+const paragraphs = computed(() => props.text.split('\n'));
 console.log(props.text);
 </script>

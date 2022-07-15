@@ -14,7 +14,7 @@
         <TrashIcon
           class="h-5 w-5 text-gray-700 cursor-pointer"
           @click="emits('delete')" />
-        <a class="cursor-pointer" :href="img" download
+        <a class="cursor-pointer" target="_blank" :href="img" download
           ><DownloadIcon class="h-5 w-5 text-gray-700" />
         </a>
         <PencilIcon

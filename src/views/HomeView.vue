@@ -3,7 +3,7 @@
     <HomeNavbar :class="navbarStyles" />
     <div class="h-16" v-show="navbarFixed"></div>
     <HomeDrawer />
-    <div class="bg-gray-50 p-8">
+    <div class="bg-white p-8">
       <div
         :dir="direction"
         class="flex flex-col md:flex-row items-stretch gap-x-16 gap-y-8 max-w-6xl mx-auto">
@@ -13,7 +13,8 @@
             class="text-4xl md:text-5xl font-bold text-transparent text-center md:text-start bg-gradient-to-r from-teal-500 to-teal-400 bg-clip-text">
             Actions Vue
           </h1>
-          <p class="text-lg text-center text-gray-600 md:text-start">
+          <p
+            class="text-lg text-center text-gray-600 md:text-justify leading-8">
             {{ t('texts.headerText') }}
           </p>
           <button
@@ -62,43 +63,49 @@
         >
       </h3>
       <div
-        class="flex flex-col md:flex-row items-stretch gap-4 max-w-6xl mx-auto invisible animated">
+        class="flex flex-col md:flex-row items-stretch gap-12 max-w-6xl mx-auto invisible animated">
         <div class="w-full md:w-auto md:min-w-[42%]">
           <img class="w-full" src="/images/preview.png" alt="preview" />
         </div>
         <div class="flex flex-col gap-2 grow py-4 invisible animated">
-          <h3 :dir="direction" class="text-xl font-bold text-gray-800">
+          <h3 :dir="direction" class="text-2xl font-bold text-gray-800">
             {{ t('texts.secureTitle') }}
           </h3>
-          <p :dir="direction" class="text-lg text-gray-700">
+          <p
+            :dir="direction"
+            class="text-lg leading-8 text-justify text-gray-700">
             {{ t('texts.secureText') }}
           </p>
         </div>
       </div>
       <div
-        class="flex flex-col md:flex-row-reverse items-stretch gap-4 max-w-6xl mx-auto invisible animated">
+        class="flex flex-col md:flex-row-reverse items-stretch gap-12 max-w-6xl mx-auto invisible animated">
         <div class="w-full md:w-auto md:min-w-[42%]">
           <img class="w-full" src="/images/preview.png" alt="preview" />
         </div>
         <div class="flex flex-col gap-2 grow py-4 invisible animated">
-          <h3 :dir="direction" class="text-xl font-bold text-gray-800">
+          <h3 :dir="direction" class="text-2xl font-bold text-gray-800">
             {{ t('texts.easyToUseTitle') }}
           </h3>
-          <p :dir="direction" class="text-lg text-gray-700">
+          <p
+            :dir="direction"
+            class="text-lg leading-8 text-justify text-gray-700">
             {{ t('texts.easyToUseText') }}
           </p>
         </div>
       </div>
       <div
-        class="flex flex-col md:flex-row items-stretch gap-4 max-w-6xl mx-auto invisible animated">
+        class="flex flex-col md:flex-row items-stretch gap-12 max-w-6xl mx-auto invisible animated">
         <div class="w-full md:w-auto md:min-w-[42%]">
           <img class="w-full" src="/images/preview.png" alt="preview" />
         </div>
         <div class="flex flex-col gap-2 grow py-4 invisible animated">
-          <h3 :dir="direction" class="text-xl font-bold text-gray-800">
+          <h3 :dir="direction" class="text-2xl font-bold text-gray-800">
             {{ t('texts.fastTitle') }}
           </h3>
-          <p :dir="direction" class="text-lg text-gray-700">
+          <p
+            :dir="direction"
+            class="text-lg leading-8 text-justify text-gray-700">
             {{ t('texts.fastText') }}
           </p>
         </div>
@@ -134,7 +141,7 @@ const { t, direction } = useLocale();
 const { animate } = useAnimate();
 
 const navbarFixed = ref(false);
-const navbarStyles = computed(() => navbarFixed.value ? ['fixed', 'top-0', 'left-0', 'right-0','bg-opacity-80', 'shadow', 'slide-top'] : [] ); // prettier-ignore
+const navbarStyles = computed(() => navbarFixed.value ? ['fixed', 'top-0', 'left-0', 'right-0','bg-opacity-80', 'shadow-md', 'slide-top'] : [] ); // prettier-ignore
 
 function onScrollPage() {
   // for navbar

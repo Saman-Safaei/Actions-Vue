@@ -9,7 +9,9 @@
         @click="emits('close')">
         &#x2715;
       </button>
-      <div v-html="props.text"></div>
+      <div>
+        <p v-for="paragraph in paragraphs" dir="auto">{{ paragraph }}</p>
+      </div>
     </div>
   </Teleport>
 </template>
@@ -21,5 +23,6 @@ const props = defineProps(['text', 'center']);
 const emits = defineEmits(['close']);
 
 const center = computed(() => ({ 'text-center': props.center }));
+const paragraphs = computed(() => props.text.value.split('\n'));
 console.log(props.text);
 </script>

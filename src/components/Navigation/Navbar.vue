@@ -9,7 +9,7 @@
     </button>
 
     <span class="grow"></span>
-    <div :dir="direction" class="flex flex-row h-full items-center">
+    <div :dir="direction" class="flex flex-row h-full items-center gap-1.5">
       <OutlinedButton @click="mainStore.toggleModal">
         {{ t('buttons.new') }}
       </OutlinedButton>
@@ -46,47 +46,3 @@ const direction = computed(() => {
   return locale.value === 'fa' ? 'rtl' : 'ltr';
 });
 </script>
-
-<style lang="scss" scoped>
-// @import "@/assets/styles/base/variables";
-
-// .navbar {
-//   display: flex;
-//   flex-direction: row;
-//   flex-wrap: nowrap;
-//   justify-content: flex-start;
-//   gap: 0.3rem;
-//   padding: $p-sm $p-md;
-//   background: $light;
-//   border-radius: 1rem;
-//   box-shadow: rgba(0, 0, 0, 0.1) 0 3px 4px;
-
-//   .navbar__img {
-//     width: 1.5rem;
-//     height: 1.5rem;
-//     object-fit: contain;
-//   }
-
-//   .navbar__spacer {
-//     flex-grow: 1;
-//   }
-
-//   .navbar__item--btn {
-//     background: $dark-green;
-//     padding: $p-xs2 $p-xs;
-//     border-radius: 0.4rem;
-//     color: $light;
-//     transition: all 200ms;
-//     font-size: 0.9rem;
-
-//     &:hover {
-//       background: $green;
-//     }
-
-//     &:active {
-//       background: $dark;
-//     }
-//   }
-
-// }
-</style>

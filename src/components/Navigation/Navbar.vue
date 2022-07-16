@@ -1,21 +1,22 @@
 <template>
   <div
     class="flex flex-row items-center gap-1.5 p-3 shadow-md rounded-md bg-white">
+    <router-link :to="{ name: 'home' }">
+      <img class="w-8 h-8" src="@/assets/logo.svg" alt="brand" />
+    </router-link>
     <button class="border-solid border-b-4 border-teal-600" @click="changeLang">
       {{ locale.toUpperCase() }}
     </button>
-    <router-link :to="{ name: 'home' }"
-      ><img class="w-8 h-8" src="@/assets/logo.svg" alt="brand"
-    /></router-link>
 
     <span class="grow"></span>
-
-    <OutlinedButton @click="mainStore.toggleModal">
-      {{ t('buttons.new') }}
-    </OutlinedButton>
-    <OutlinedButton @click="logoutAndPush">
-      {{ t('buttons.logout') }}
-    </OutlinedButton>
+    <div :dir="direction" class="flex flex-row h-full items-center">
+      <OutlinedButton @click="mainStore.toggleModal">
+        {{ t('buttons.new') }}
+      </OutlinedButton>
+      <OutlinedButton @click="logoutAndPush">
+        {{ t('buttons.logout') }}
+      </OutlinedButton>
+    </div>
   </div>
 </template>
 

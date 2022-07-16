@@ -69,6 +69,6 @@ const mainStore = useMainStore();
 const { locale, switchLang, t, direction } = useLocale();
 
 const signinButtonName = computed(() =>
-  userStore.loggingIn ? 'Dashboard' : t('buttons.login')
+  userStore.loggingIn ? t('buttons.dashboard') : t('buttons.login')
 );
 </script>

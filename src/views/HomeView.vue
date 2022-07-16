@@ -65,7 +65,7 @@
       <div
         class="flex flex-col md:flex-row items-stretch gap-12 max-w-6xl mx-auto invisible animated">
         <div class="w-full md:w-auto md:min-w-[42%]">
-          <img class="w-full" src="/images/preview.png" alt="preview" />
+          <img class="w-full" src="/images/preview1.jpg" alt="preview" />
         </div>
         <div class="flex flex-col gap-2 grow py-4 invisible animated">
           <h3 :dir="direction" class="text-2xl font-bold text-gray-800">
@@ -81,7 +81,10 @@
       <div
         class="flex flex-col md:flex-row-reverse items-stretch gap-12 max-w-6xl mx-auto invisible animated">
         <div class="w-full md:w-auto md:min-w-[42%]">
-          <img class="w-full" src="/images/preview.png" alt="preview" />
+          <img
+            class="w-full rounded-lg"
+            src="/images/preview2.jpg"
+            alt="preview" />
         </div>
         <div class="flex flex-col gap-2 grow py-4 invisible animated">
           <h3 :dir="direction" class="text-2xl font-bold text-gray-800">
@@ -97,7 +100,10 @@
       <div
         class="flex flex-col md:flex-row items-stretch gap-12 max-w-6xl mx-auto invisible animated">
         <div class="w-full md:w-auto md:min-w-[42%]">
-          <img class="w-full" src="/images/preview.png" alt="preview" />
+          <img
+            class="w-full rounded-lg"
+            src="/images/preview3.jpg"
+            alt="preview" />
         </div>
         <div class="flex flex-col gap-2 grow py-4 invisible animated">
           <h3 :dir="direction" class="text-2xl font-bold text-gray-800">

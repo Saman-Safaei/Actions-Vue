@@ -38,7 +38,7 @@
         class="py-1.5 px-2.5 rounded-md transition duration-300"
         @click="userStore.logOut()"
         v-if="userStore.loggingIn">
-        Log out
+        {{ t('buttons.logout') }}
       </button>
       <router-link
         class="bg-teal-600 hover:bg-teal-500 !text-white py-1.5 px-2 rounded-md transition"

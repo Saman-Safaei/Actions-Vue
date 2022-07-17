@@ -14,7 +14,7 @@
         <TrashIcon
           class="h-5 w-5 text-gray-700 cursor-pointer"
           @click="emits('delete')" />
-        <a class="cursor-pointer" target="_blank" :href="img" download
+        <a class="cursor-pointer" target="_blank" :href="dlImg"
           ><DownloadIcon class="h-5 w-5 text-gray-700" />
         </a>
         <PencilIcon
@@ -35,9 +35,12 @@ const userStore = useUserStore();
 const props = defineProps(['img', 'title', 'body', 'id']);
 const emits = defineEmits(['imgClicked', 'delete', 'edit']);
 
-const img = computed(() => {
-  return baseURL + '/files/' + props.img + '/?token=' + userStore.token;
-});
+const img = computed(
+  () => baseURL + '/files/' + props.img + '/?token=' + userStore.token
+);
+const dlImg = computed(
+  () => `${baseURL}/files/dl/${props.img}/?token=${userStore.token}`
+);
 </script>
 
 <style lang="scss" scoped>

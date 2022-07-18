@@ -133,12 +133,22 @@
       </Accordion>
     </section>
   </main>
+
+  <Teleport to="body">
+    <ScrollTopBtn
+      v-show="showScrollToTopButton"
+      class="fixed bottom-4 right-5 z-[15]"
+      @click="scrollToTop"
+      :percent="scrollPercent" />
+  </Teleport>
 </template>
 
 <script setup>
 import HomeNavbar from '../components/Navigation/HomeNavbar.vue';
 import HomeDrawer from '../components/Navigation/HomeDrawer.vue';
 import Accordion from '../components/Buttons/Accordion.vue';
+import ScrollTopBtn from '../components/Buttons/ScrollTop.vue';
+
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useLocale } from '../composables/locale';
 import { useAnimate } from '../composables/useAnimate';
@@ -149,18 +159,39 @@ const { animate } = useAnimate();
 const navbarFixed = ref(false);
 const navbarStyles = computed(() => navbarFixed.value ? ['fixed', 'top-0', 'left-0', 'right-0','bg-opacity-80', 'shadow-md', 'slide-top'] : [] ); // prettier-ignore
 
-function onScrollPage() {
+const scrollPercent = ref(0);
+const showScrollToTopButton = ref(false);
+
+function onScrollPage(oldScrollY) {
+  const { scrollY, innerHeight } = window;
+  const { scrollHeight } = document.body;
+  const offset = 200;
   // for navbar
-  if (window.scrollY > 200 && !navbarFixed.value) {
+  if (scrollY > offset && !navbarFixed.value) {
     navbarFixed.value = true;
   }
-  if (window.scrollY <= 200 && navbarFixed.value) {
+  if (scrollY <= offset && navbarFixed.value) {
     navbarFixed.value = false;
   }
   // animate scrolling elements
   animate();
+  // for scroll to top button
+  scrollPercent.value = (scrollY / (scrollHeight - innerHeight)) * 100;
+
+  if (oldScrollY.value > scrollY && scrollY > offset)
+    showScrollToTopButton.value = true;
+  else showScrollToTopButton.value = false;
+
+  oldScrollY.value = scrollY;
 }
 
-onMounted(() => document.addEventListener('scroll', onScrollPage));
+function scrollToTop() {
+  window.scrollTo({ behavior: 'smooth', top: 0, left: 0 });
+}
+
+onMounted(() => {
+  const oldScrollY = ref(window.scrollY);
+  document.addEventListener('scroll', () => onScrollPage(oldScrollY));
+});
 onBeforeUnmount(() => document.removeEventListener('scroll', onScrollPage));
 </script>

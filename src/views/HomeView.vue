@@ -136,10 +136,11 @@
 
   <Teleport to="body">
     <ScrollTopBtn
-      v-show="showScrollToTopButton"
       class="fixed bottom-4 right-5 z-[15]"
       @click="scrollToTop"
-      :percent="scrollPercent" />
+      :percent="scrollPercent"
+      :visible="showScrollToTopButton"
+      color="rgb(15 118 110)" />
   </Teleport>
 </template>
 
@@ -178,8 +179,7 @@ function onScrollPage(oldScrollY) {
   // for scroll to top button
   scrollPercent.value = (scrollY / (scrollHeight - innerHeight)) * 100;
 
-  if (oldScrollY.value > scrollY && scrollY > offset)
-    showScrollToTopButton.value = true;
+  if (oldScrollY.value > scrollY) showScrollToTopButton.value = true;
   else showScrollToTopButton.value = false;
 
   oldScrollY.value = scrollY;

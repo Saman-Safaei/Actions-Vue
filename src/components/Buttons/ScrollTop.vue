@@ -1,6 +1,7 @@
 <template>
   <Transition name="shown">
     <div
+      v-if="props.visible && !(percent <= 0)"
       class="w-14 h-14 p-1 conic-gradient rounded-full drop-shadow-md"
       :class="attrs.class">
       <button
@@ -18,10 +19,12 @@ import { computed, useAttrs } from 'vue';
 
 const props = defineProps({
   percent: Number,
+  visible: Boolean,
+  color: String,
 });
 const attrs = useAttrs();
 const fillDeg = computed(() => {
-  return (360 / 100) * props.percent + 'deg';
+  return props.color + ' ' + (360 / 100) * props.percent + 'deg';
 });
 </script>
 
@@ -33,19 +36,17 @@ export default {
 
 <style lang="scss" scoped>
 .conic-gradient {
-  background: conic-gradient(
-    rgb(18, 178, 152) v-bind(fillDeg),
-    transparent 0deg
-  );
+  background: conic-gradient(v-bind(fillDeg), transparent 0deg);
 }
 
 .shown-enter-from,
 .shown-leave-to {
-  transform: translateY(200%);
+  opacity: 0;
+  transform: rotateZ(360deg);
 }
 
 .shown-enter-active,
 .shown-leave-active {
-  transition: all 500ms;
+  transition: all 500ms ease-in-out;
 }
 </style>

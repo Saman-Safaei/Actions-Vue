@@ -25,7 +25,6 @@
       v-if="mainStore.showCreateModal"
       @close="mainStore.toggleModal"
       @created="reloadActions" />
-    <Collapse></Collapse>
   </main>
 </template>
 

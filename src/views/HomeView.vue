@@ -23,7 +23,7 @@
           </button>
         </div>
         <img
-          class="w-10/12 mx-auto md:h-80 md:w-auto drop-shadow-lg order-1 md:order-2"
+          class="w-10/12 mx-auto md:h-auto md:w-[41%] md:min-w-[350px] drop-shadow-md order-1 md:order-2 shrink-0"
           src="/images/i_images.svg"
           alt="logo" />
       </div>

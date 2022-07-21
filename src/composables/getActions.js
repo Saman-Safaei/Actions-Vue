@@ -1,6 +1,6 @@
-import { ref, reactive } from "vue";
-import { useUserStore } from "../stores/users";
-import api from "../api";
+import { ref, reactive } from 'vue';
+import { useUserStore } from '../stores/users';
+import api from '../api';
 
 const endpoint = '/actions';
 
@@ -16,7 +16,8 @@ export function useAllActions(router, userStore) {
   function load() {
     loaded.value = false;
 
-    api.get(endpoint, { headers: { token: token } })
+    api
+      .get(endpoint, { headers: { token: token } })
       .then(res => {
         allActions.length = 0;
         allActions.push(...res.data);
@@ -29,12 +30,11 @@ export function useAllActions(router, userStore) {
           error.message_code = err.response.data?.code;
           if (router && userStore && err.response.status === 401) {
             userStore.logOut();
-            router.push({ name: "auth" });
+            router.push({ name: 'auth' });
           }
         }
       });
   }
-
 
   return { data: allActions, error: error, loaded: loaded, load: load };
 }

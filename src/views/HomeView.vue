@@ -64,7 +64,7 @@
       </h3>
       <div
         class="flex flex-col md:flex-row items-stretch gap-12 max-w-6xl mx-auto invisible animated">
-        <div class="w-full md:w-auto md:min-w-[40%]">
+        <div class="w-full md:w-auto md:min-w-[38%]">
           <img class="w-full" src="/images/secure.svg" alt="preview" />
         </div>
         <div class="flex flex-col gap-2 grow py-4 invisible animated">
@@ -80,7 +80,7 @@
       </div>
       <div
         class="flex flex-col md:flex-row-reverse items-stretch gap-12 max-w-6xl mx-auto invisible animated">
-        <div class="w-full md:w-auto md:min-w-[40%]">
+        <div class="w-full md:w-auto md:min-w-[38%]">
           <img
             class="w-full rounded-lg"
             src="/images/easytouse.svg"
@@ -99,7 +99,7 @@
       </div>
       <div
         class="flex flex-col md:flex-row items-stretch gap-12 max-w-6xl mx-auto invisible animated">
-        <div class="w-full md:w-auto md:min-w-[40%]">
+        <div class="w-full md:w-auto md:min-w-[38%]">
           <img
             class="w-full rounded-lg"
             src="/images/fast.svg"

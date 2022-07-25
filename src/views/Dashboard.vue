@@ -70,11 +70,7 @@ function closeModal() {
 }
 
 // Card Actions
-const {
-  pending: pendingDelete,
-  error: deleteError,
-  deleteAction,
-} = useDeleteAction(reloadActions);
+const { deleteAction } = useDeleteAction(reloadActions);
 </script>
 
 <style lang="scss" scoped>

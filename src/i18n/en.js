@@ -42,7 +42,7 @@ export default {
     featuresTitle: 'Features of',
     previewTitle: 'Preview of',
     headerText:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni eveniet quo repellendus. Nisi quos voluptas maxime ab doloremque nam officiis qui aspernatur eius soluta natus quae, reprehenderit aperiam, praesentium unde.',
+      'A safe place to store and upload photos, you can backup and manage your photos using this service in complete security.',
     homeTitle: 'Home',
     loremTitle: 'Lorem Ipsum',
     aboutTitle: 'About us',

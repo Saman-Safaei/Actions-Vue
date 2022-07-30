@@ -49,7 +49,7 @@
 
     <div class="md:hidden flex flex-row items-center">
       <button @click="mainStore.toggleHomeDrawer()">
-        <DotsVerticalIcon class="w-7 h-7 black" />
+        <MenuAlt3Icon class="w-7 h-7 text-gray-600" />
       </button>
     </div>
   </div>
@@ -58,7 +58,7 @@
 <script setup>
 import { computed } from 'vue';
 
-import { DotsVerticalIcon } from '@heroicons/vue/outline';
+import { MenuAlt3Icon } from '@heroicons/vue/outline';
 import { useUserStore } from '../../stores/users';
 import { useMainStore } from '../../stores/main';
 import { useLocale } from '../../composables/locale';

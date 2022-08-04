@@ -17,10 +17,11 @@
             class="text-lg text-center text-gray-600 md:text-justify leading-8">
             {{ t('texts.headerText') }}
           </p>
-          <button
+          <router-link
+            :to="{ name: 'dashboard' }"
             class="mt-4 bg-teal-600 hover:bg-teal-500 active:bg-teal-700 text-white px-4 py-2.5 rounded-full transition-all">
             {{ t('buttons.headerManage') }}
-          </button>
+          </router-link>
         </div>
         <img
           class="w-10/12 mx-auto md:h-auto md:w-[41%] md:min-w-[350px] drop-shadow-md order-1 md:order-2 shrink-0"
@@ -100,10 +101,7 @@
       <div
         class="flex flex-col md:flex-row items-stretch gap-12 max-w-6xl mx-auto invisible animated">
         <div class="w-full md:w-auto md:min-w-[38%]">
-          <img
-            class="w-full rounded-lg"
-            src="/images/fast.svg"
-            alt="preview" />
+          <img class="w-full rounded-lg" src="/images/fast.svg" alt="preview" />
         </div>
         <div class="flex flex-col gap-2 grow py-4 invisible animated">
           <h3 :dir="direction" class="text-2xl font-bold text-gray-800">

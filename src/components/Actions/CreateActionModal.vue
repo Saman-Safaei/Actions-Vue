@@ -48,7 +48,7 @@
 <script setup>
 import { computed } from '@vue/reactivity';
 import { useI18n } from 'vue-i18n';
-import { useForm, useField, validate } from 'vee-validate';
+import { useForm, useField } from 'vee-validate';
 
 import { useCreateAction } from '../../composables/createAction';
 import { useNotifStore } from '../../stores/notification';

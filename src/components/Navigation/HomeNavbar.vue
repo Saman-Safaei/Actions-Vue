@@ -14,19 +14,19 @@
     </div>
     <div class="flex-grow"></div>
     <nav :dir="direction" class="hidden md:flex flex-row items-stretch">
-      <ul class="flex flex-row items-center h-full gap-3">
+      <ul class="flex flex-row items-center h-full gap-4">
         <li>
-          <a class="text-teal-700" href="#preview">{{
+          <a class="relative text-teal-700 hover:text-teal-600 transition duration-300 before:content-[''] before:rounded-full before:absolute before:top-[130%] before:right-0 before:h-0.5 before:w-full before:bg-teal-500 before:origin-center before:scale-x-0 hover:before:scale-x-100 before:transition-all before:duration-500 before:delay-75" href="#preview">{{
             t('buttons.preview')
           }}</a>
         </li>
         <li>
-          <a class="text-teal-700" href="#features">{{
+          <a class="relative text-teal-700 hover:text-teal-600 transition duration-300 before:content-[''] before:rounded-full before:absolute before:top-[130%] before:right-0 before:h-0.5 before:w-full before:bg-teal-500 before:origin-center before:scale-x-0 hover:before:scale-x-100 before:transition-all before:duration-500 before:delay-75" href="#features">{{
             t('buttons.features')
           }}</a>
         </li>
         <li>
-          <a class="text-teal-700" href="#about">
+          <a class="relative text-teal-700 hover:text-teal-600 transition duration-300 before:content-[''] before:rounded-full before:absolute before:top-[130%] before:right-0 before:h-0.5 before:w-full before:bg-teal-500 before:origin-center before:scale-x-0 hover:before:scale-x-100 before:transition-all before:duration-500 before:delay-75" href="#about">
             {{ t('buttons.about') }}
           </a>
         </li>

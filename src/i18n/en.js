@@ -46,5 +46,7 @@ export default {
     homeTitle: 'Home',
     loremTitle: 'Lorem Ipsum',
     aboutTitle: 'About us',
+    file: "File",
+    body: "Body"
   },
 };

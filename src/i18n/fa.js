@@ -46,5 +46,7 @@ export default {
     homeTitle: 'خانه',
     loremTitle: 'لورم ایپسام',
     aboutTitle: 'درباره ما',
+    file: "فایل",
+    body: "بدنه"
   },
 };

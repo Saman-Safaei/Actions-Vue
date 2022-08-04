@@ -4,6 +4,7 @@
     <div class="relative w-full max-w-md">
       <button
         class="rounded-full w-6 h-6 bg-red-400 absolute top-0 right-0 translate-x-1/3 -translate-y-1/3 text-white"
+        :disabled="pending"
         @click="emits('close')">
         x
       </button>

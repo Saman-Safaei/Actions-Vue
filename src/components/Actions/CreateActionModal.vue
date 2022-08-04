@@ -35,6 +35,7 @@
           <button
             type="submit"
             :disabled="pending"
+            :dir="direction"
             class="p-2 bg-gradient-to-tr from-teal-700 to-teal-500 text-white rounded">
             <template v-if="!pending">{{ t('buttons.create') }}</template>
             <template v-else>{{ t('buttons.wait') }}</template>
@@ -47,7 +48,7 @@
 
 <script setup>
 import { computed } from '@vue/reactivity';
-import { useI18n } from 'vue-i18n';
+import { useLocale } from '../../composables/locale';
 import { useForm, useField } from 'vee-validate';
 
 import { useCreateAction } from '../../composables/createAction';
@@ -56,7 +57,7 @@ import { useNotifStore } from '../../stores/notification';
 const notifStore = useNotifStore();
 const emits = defineEmits(['close', 'created']);
 const props = defineProps(['title', 'text', 'type']);
-const { t } = useI18n({ useScope: 'global' });
+const { t, direction } = useLocale();
 
 // define form schema -----------------------------------------------
 const { validate } = useForm({

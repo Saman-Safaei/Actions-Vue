@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed top-12 right-0 max-w-md z-10">
+  <div class="fixed top-12 right-0 max-w-md z-40">
     <transition-group name="notifs">
       <Notification v-for="notif in store.getAllNotifications" :key="notif.id" :n-id="notif.id">
         {{ notif.message }}

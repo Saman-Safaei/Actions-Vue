@@ -16,6 +16,7 @@ export default {
     ipsum: 'Ipsum',
     test: 'Test',
     home: 'Return to homepage',
+    update: 'Update',
   },
   texts: {
     haveAccount: 'Have an account ?',
@@ -46,7 +47,9 @@ export default {
     homeTitle: 'Home',
     loremTitle: 'Lorem Ipsum',
     aboutTitle: 'About us',
-    file: "File",
-    body: "Body"
+    file: 'File',
+    body: 'Body',
+    actionCreated: 'Action Created.',
+    actionUpdated: 'Action Updated.',
   },
 };

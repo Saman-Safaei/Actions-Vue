@@ -16,6 +16,7 @@ export default {
     ipsum: 'ایپسام',
     test: 'آزمایشی',
     home: 'بازگشت به صفحه اصلی',
+    update: 'به روزرسانی',
   },
   texts: {
     haveAccount: 'قبلا ثبت نام کرده اید ؟',
@@ -46,7 +47,9 @@ export default {
     homeTitle: 'خانه',
     loremTitle: 'لورم ایپسام',
     aboutTitle: 'درباره ما',
-    file: "فایل",
-    body: "بدنه"
+    file: 'فایل',
+    body: 'بدنه',
+    actionCreated: 'اکشن ساخته شد.',
+    actionUpdated: 'اکشن به روزرسانی شد.',
   },
 };

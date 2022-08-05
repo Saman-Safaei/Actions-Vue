@@ -3,6 +3,7 @@ import { ref } from "vue";
 
 export const useMainStore = defineStore("main", () => {
   const showCreateModal = ref(false);
+  const showUpdateModal = ref(false);
   const showHomeDrawer = ref(false);
 
   function toggleModal() {
@@ -12,5 +13,9 @@ export const useMainStore = defineStore("main", () => {
     showHomeDrawer.value = !showHomeDrawer.value;
   }
 
-  return { showCreateModal, toggleModal, showHomeDrawer, toggleHomeDrawer };
+  function toggleUpdateModal() {
+    showUpdateModal.value = !showUpdateModal.value;
+  }
+
+  return { showCreateModal, toggleModal, showHomeDrawer, toggleHomeDrawer, toggleUpdateModal, showUpdateModal };
 });

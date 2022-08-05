@@ -10,7 +10,8 @@
         :title="action.title"
         :img="action.img"
         @img-clicked="openModal(action.id)"
-        @delete="deleteAction(action.id)" />
+        @delete="deleteAction(action.id)"
+        @edit="editAction(action.id, action.title, action.body)" />
     </ActionsLayout>
 
     <PlaceHolderActions v-show="!dataLoaded" />
@@ -25,6 +26,13 @@
       v-if="mainStore.showCreateModal"
       @close="mainStore.toggleModal"
       @created="reloadActions" />
+    <UpdateActionModal
+      v-if="mainStore.showUpdateModal"
+      :title="editedTitle"
+      :body="editedBody"
+      :action-id="editedId"
+      @close="mainStore.toggleUpdateModal"
+      @update="reloadActions" />
   </main>
 </template>
 
@@ -35,6 +43,7 @@ import Action from '../components/Actions/Action.vue';
 import ActionModal from '../components/Actions/ActionModal.vue';
 import PlaceHolderActions from '../components/Actions/PlaceHolderActions.vue';
 import CreateActionModal from '../components/Actions/CreateActionModal.vue';
+import UpdateActionModal from '../components/Actions/UpdateActionModal.vue';
 
 import { useUserStore } from '../stores/users';
 import { useMainStore } from '../stores/main';
@@ -71,6 +80,18 @@ function closeModal() {
 
 // Card Actions
 const { deleteAction } = useDeleteAction(reloadActions);
+
+const editedTitle = ref('');
+const editedBody = ref('');
+const editedId = ref(null);
+
+const editAction = (id, title, body) => {
+  editedId.value = id;
+  editedTitle.value = title;
+  editedBody.value = body;
+
+  mainStore.toggleUpdateModal();
+};
 </script>
 
 <style lang="scss" scoped>
